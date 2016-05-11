@@ -16,7 +16,12 @@ var diplomat = angular.module('diplomat', [
 
 .directive("cli",()=>{
 	return {
-		controller:($scope)=>{
+		controller:($scope,$anchorScroll,$location,$timeout)=>{
+			var gotoBottom = function() {
+				$location.hash('lastCommand');
+				$anchorScroll();
+		    };
+
 			$scope.outputLines = [
 				"hello world",
 				"this is a new line",
@@ -24,8 +29,12 @@ var diplomat = angular.module('diplomat', [
 				"anD THIS IS A REALLY LONG LINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
 			]
 			$scope.addOutputLine = (line)=>{
+				if(line==="") line = "_";
 				$scope.outputLines.push(line);
 				$scope.command = "";
+				$timeout(()=>{
+					gotoBottom();
+				})
 			}
 		},
 		templateUrl: "scripts/cli.html"

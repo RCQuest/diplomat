@@ -1,7 +1,8 @@
 <div class="output-container">
 	<div class="output-pushdown">
 		<div class="output-line" 
-			 ng-repeat="line in outputLines track by $index">{{line}}</div>
+			 ng-repeat="line in outputLines track by $index"
+			 id="{{ $last ? 'lastCommand' : ''}}">{{line}}</div>
 	</div>
 </div>
 <div class="command-input-container">
