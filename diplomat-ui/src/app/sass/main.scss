@@ -3,9 +3,10 @@
  */
 
 @import 'inconsolata';
+@import 'apercu';
 
 * {
-  font-family: Inconsolata, Helvetica;
+  font-family: 'Apercu Mono', Inconsolata, mono;
   font-size: 12pt;
   color:white;
 }
@@ -14,7 +15,6 @@
 	height:calc(100vh - 20px);
 	width:100vw;
 	position:relative;
-
 }
 
 .output-pushdown{
