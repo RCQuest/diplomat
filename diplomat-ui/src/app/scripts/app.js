@@ -4,6 +4,8 @@
 
 import 'angular';
 import 'angular-ui-router';
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
 
 import config from './config';
 import templatesModule from './_templates';
@@ -29,13 +31,41 @@ var diplomat = angular.module('diplomat', [
 				"anD THIS IS A REALLY LONG LINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
 			]
 			$scope.addOutputLine = (line)=>{
+				sendCommand(line);
 				if(line==="") line = "_";
 				$scope.outputLines.push(line);
 				$scope.command = "";
 				$timeout(()=>{
 					gotoBottom();
-				})
+				});
 			}
+
+			var socket = new SockJS('http://localhost:8080/command');
+			// command.onopen = function() {
+			// 	command.send('test');
+			// 	console.log('open');
+			// };
+			// command.onmessage = function(e) {
+			// 	console.log('message', e);
+			// };
+			// command.onclose = function() {
+			// 	console.log('close');
+			// };
+
+			var stompClient = Stomp.over(socket);
+			stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/response', function(greeting){
+                    console.log(JSON.parse(greeting.body).content);
+
+                });
+            });
+
+            var sendCommand = function(command){
+            	console.log('tryina senddd '+command);
+            	stompClient.send("/diplomat/command",{},JSON.stringify({"commandString":command}));
+            	
+            };
 		},
 		templateUrl: "scripts/cli.html"
 	}

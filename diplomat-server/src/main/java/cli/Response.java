@@ -2,9 +2,13 @@ package cli;
 
 public class Response {
 
-    private String responseString;
+    private String content;
 
-    public Response(String responseString){
-        this.responseString = responseString;
+    public Response(String content){
+        this.content = content;
+    }
+
+    public String getContent(){
+        return content;
     }
 }
