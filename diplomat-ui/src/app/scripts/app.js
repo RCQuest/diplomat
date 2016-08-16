@@ -41,23 +41,17 @@ var diplomat = angular.module('diplomat', [
 			}
 
 			var socket = new SockJS('http://localhost:8080/command');
-			// command.onopen = function() {
-			// 	command.send('test');
-			// 	console.log('open');
-			// };
-			// command.onmessage = function(e) {
-			// 	console.log('message', e);
-			// };
-			// command.onclose = function() {
-			// 	console.log('close');
-			// };
+			
 
 			var stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
                     console.log(JSON.parse(greeting.body).content);
-
+                    $scope.outputLines.push(JSON.parse(greeting.body).content);
+                    $timeout(()=>{
+						gotoBottom();
+					});
                 });
             });
 
