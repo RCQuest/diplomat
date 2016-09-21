@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/roomescape/GameController.java" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8f9fb16a-7f05-465d-9cb9-ff734abb2dec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cli/CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/cli/CommandController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/AGameObject.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/CLICommandFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/CLIGameBootstrap.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/GameController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IGameCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/ILookable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IObtainable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IRoomEscapeViewModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IStandaloneUsable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IUsable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/IUsableTarget.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/Inventory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/LookCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/Player.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/roomescape/Room.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cli/Diplomat.java" afterPath="$PROJECT_DIR$/src/main/java/Diplomat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="diplomat-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +37,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -37,75 +58,129 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="119">
+              <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+              <folding>
+                <element signature="e#311#312#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IGameCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IGameCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cli/Command.java">
+      <file leaf-file-name="CLIGameBootstrap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/CLIGameBootstrap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="170">
+              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
               <folding>
-                <element signature="e#109#110#0" expanded="true" />
-                <element signature="e#145#146#0" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cli/CommandController.java">
+      <file leaf-file-name="Diplomat.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+            <state relative-caret-position="102">
+              <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+              <folding>
+                <element signature="e#212#213#0" expanded="true" />
+                <element signature="e#271#272#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLICommandFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/CLICommandFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+              <folding>
+                <element signature="e#173#174#0" expanded="true" />
+                <element signature="e#229#230#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/Room.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Diplomat.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
+      <file leaf-file-name="ILookable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/ILookable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LookCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/LookCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#226#227#0" expanded="false" />
-                <element signature="e#285#286#0" expanded="false" />
+                <element signature="e#180#181#0" expanded="true" />
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#345#346#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSocketConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cli/WebSocketConfig.java">
+      <file leaf-file-name="IRoomEscapeViewModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IRoomEscapeViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Response.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cli/Response.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="442">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
-                <element signature="e#103#104#0" expanded="false" />
-                <element signature="e#141#142#0" expanded="false" />
-                <element signature="e#174#175#0" expanded="false" />
-                <element signature="e#204#205#0" expanded="false" />
+                <element signature="e#194#195#0" expanded="true" />
+                <element signature="e#230#231#0" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+                <element signature="e#330#331#0" expanded="true" />
+                <element signature="e#379#380#0" expanded="true" />
+                <element signature="e#407#408#0" expanded="true" />
+                <element signature="e#470#471#0" expanded="true" />
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#533#534#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,6 +192,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Singleton" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -124,6 +201,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="C:\Program Files\Gradle\gradle-2.14.1" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2.14.1" />
+      </map>
+    </option>
     <option name="availableProjects">
       <map>
         <entry>
@@ -340,7 +427,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1465234839000" />
+        <entry key="$PROJECT_DIR$" value="1474465091183" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -376,66 +463,133 @@
               <option name="name" value="diplomat-server" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/ant-1.9.3.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/ant-launcher-1.9.3.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-base-services-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-base-services-groovy-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-cli-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-core-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-docs-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-launcher-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-messaging-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-model-core-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-model-groovy-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-native-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-open-api-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-resources-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-tooling-api-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-ui-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/gradle-wrapper-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/groovy-all-2.4.4.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-announce-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-antlr-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-build-comparison-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-build-init-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-code-quality-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-dependency-management-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-diagnostics-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-ear-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-ide-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-ide-native-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-ivy-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-jacoco-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-javascript-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-jetty-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-language-groovy-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-language-java-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-language-jvm-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-language-native-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-language-scala-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-maven-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-osgi-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-platform-base-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-platform-jvm-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-platform-native-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-platform-play-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-plugin-development-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-plugin-use-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-plugins-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-publish-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-reporting-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-resources-http-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-resources-s3-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-resources-sftp-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-scala-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-signing-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-sonar-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-test-kit-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-testing-base-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-testing-jvm-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-testing-native-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/gradle-tooling-api-builders-2.12.jar" />
-                  <option value="/usr/local/Cellar/gradle/2.12/libexec/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/announce" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/antlr" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/base-services" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/base-services-groovy" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/build-comparison" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/build-init" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/cli" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/code-quality" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/core" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/dependency-management" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/diagnostics" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ear" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ide" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ide-native" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ide-play" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/installation-beacon" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/internal-integ-testing" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/internal-testing" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ivy" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/jacoco" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/javascript" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/jetty" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/jvm-services" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/language-groovy" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/language-java" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/language-jvm" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/language-native" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/language-scala" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/launcher" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/logging" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/maven" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/messaging" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/model-core" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/model-groovy" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/native" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/open-api" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/osgi" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/platform-base" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/platform-jvm" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/platform-native" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/platform-play" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/plugin-development" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/plugin-use" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/plugins" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/process-services" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/publish" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/reporting" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/resources" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/resources-http" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/resources-s3" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/resources-sftp" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/scala" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/signing" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/sonar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/test-kit" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/testing-base" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/testing-jvm" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/testing-native" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/tooling-api" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/tooling-api-builders" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/ui" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/src/wrapper" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/ant-1.9.6.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/ant-launcher-1.9.6.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-base-services-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-base-services-groovy-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-cli-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-core-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-docs-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-installation-beacon-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-jvm-services-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-launcher-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-logging-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-messaging-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-model-core-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-model-groovy-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-native-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-open-api-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-process-services-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-resources-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-tooling-api-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-ui-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/gradle-wrapper-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/groovy-all-2.4.4.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-announce-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-antlr-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-build-comparison-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-build-init-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-code-quality-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-dependency-management-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-diagnostics-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-ear-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-ide-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-ide-native-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-ide-play-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-ivy-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-jacoco-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-javascript-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-jetty-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-language-groovy-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-language-java-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-language-jvm-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-language-native-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-language-scala-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-maven-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-osgi-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-platform-base-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-platform-jvm-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-platform-native-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-platform-play-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-plugin-development-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-plugin-use-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-plugins-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-publish-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-reporting-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-resources-http-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-resources-s3-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-resources-sftp-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-scala-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-signing-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-sonar-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-test-kit-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-testing-base-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-testing-jvm-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-testing-native-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/gradle-tooling-api-builders-2.14.1.jar" />
+                  <option value="C:/Program Files/Gradle/gradle-2.14.1/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -459,6 +613,27 @@
         <option value="$PROJECT_DIR$/src/main/java/cli/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/cli/Response.java" />
         <option value="$PROJECT_DIR$/src/main/java/cli/CommandController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IGameObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IObtainable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/Inventory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IStandaloneUsable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IUsableTarget.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IUsable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/AGameObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/Room.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/CommandFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IGameCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/LookCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/IRoomEscapeViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/GameDataStore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/RoomDataStoreObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/DataStoreObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/ILookable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/CLICommandFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/roomescape/CLIGameBootstrap.java" />
       </list>
     </option>
   </component>
@@ -470,8 +645,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1319" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -504,10 +681,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="diplomat-server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -577,6 +750,54 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diplomat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diplomat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roomescape" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diplomat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diplomat-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cli" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -584,22 +805,28 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="SearchEverywhereHistoryKey" value=" {&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="roomescape" />
       <recent name="cli" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Diplomat">
+  <component name="RunManager" selected="Groovy.build">
     <configuration default="false" name="build" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
       <module name="diplomat-server" />
       <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
@@ -614,11 +841,11 @@
     <configuration default="false" name="Diplomat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cli.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="cli.Diplomat" />
+      <option name="MAIN_CLASS_NAME" value="Diplomat" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -650,8 +877,13 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method />
@@ -670,8 +902,13 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -880,8 +1117,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Diplomat" />
-        <item index="1" class="java.lang.String" itemvalue="Groovy.build" />
+        <item index="0" class="java.lang.String" itemvalue="Groovy.build" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Diplomat" />
       </list>
     </recent_temporary>
   </component>
@@ -917,28 +1154,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1319" height="784" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.49121523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.50442475" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35014838" sideWeight="0.5087848" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27299702" sideWeight="0.49270913" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934928" sideWeight="0.49557522" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22563316" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -984,10 +1221,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,10 +1237,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,10 +1253,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,18 +1261,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#285#286#0" expanded="false" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1053,8 +1282,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/CommandController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1071,10 +1335,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,18 +1343,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#285#286#0" expanded="false" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1110,10 +1372,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,57 +1380,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#285#286#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/CommandController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#285#286#0" expanded="false" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1219,65 +1440,250 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="425">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Diplomat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#285#286#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cli/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="272">
           <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cli/Response.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="153">
           <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding>
-            <element signature="e#103#104#0" expanded="false" />
-            <element signature="e#141#142#0" expanded="false" />
             <element signature="e#174#175#0" expanded="false" />
             <element signature="e#204#205#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Command.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/CommandController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        <state relative-caret-position="209">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
           <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cli/CommandController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cli/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IUsable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IUsableTarget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IObtainable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/Inventory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding>
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#260#261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/AGameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IStandaloneUsable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/GameDataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="86" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/DataStoreObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/RoomDataStoreObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+          <folding>
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/ILookable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IGameCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/IRoomEscapeViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/LookCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          <folding>
+            <element signature="e#180#181#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/CLICommandFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+          <folding>
+            <element signature="e#173#174#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/roomescape/CLIGameBootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplomat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding>
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
