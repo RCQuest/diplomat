@@ -1,6 +1,8 @@
 package cli;
 
-public class Command {
+import eventsystem.events.core.EventArgs;
+
+public class Command extends EventArgs{
 
     private String commandString;
 

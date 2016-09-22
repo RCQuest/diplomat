@@ -1,6 +1,9 @@
 package roomescape;
 
-class GameController {
+import roomescape.commands.IGameCommand;
+import roomescape.gameobjects.actors.Player;
+
+public class GameController {
 
     private IRoomEscapeViewModel viewModel;
     private Player player;
@@ -8,9 +11,14 @@ class GameController {
     GameController(IRoomEscapeViewModel viewModel, Player player) {
         this.viewModel = viewModel;
         this.player = player;
+
     }
 
-    private void HandleCommand(IGameCommand command) {
+    public void HandleCommand(IGameCommand command) {
         command.Execute(player,viewModel);
+    }
+
+    public Player GetPlayer() {
+        return player;
     }
 }

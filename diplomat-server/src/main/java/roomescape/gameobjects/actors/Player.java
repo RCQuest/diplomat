@@ -1,4 +1,6 @@
-package roomescape;
+package roomescape.gameobjects.actors;
+
+import roomescape.gameobjects.*;
 
 /**
  * Created by Rachel on 21/09/2016.
@@ -7,7 +9,7 @@ public class Player {
     private Room currentRoom;
     private Inventory playerInventory;
 
-    public String Look(ILookable at) {
+    public String Look(IExaminable at) {
         return at.Describe();
     }
 
@@ -16,11 +18,11 @@ public class Player {
     }
 
     public void Use(IStandaloneUsable object) {
-        object.Use();
+        object.Use(this);
     }
 
     public void UseOn(IUsable object, IUsableTarget target) {
-        object.Use(target);
+        object.Use(target, this);
     }
 
     public Room GetRoom() {

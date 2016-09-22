@@ -1,8 +1,11 @@
-package roomescape;
+package roomescape.gameobjects.actors;
+
+import roomescape.gameobjects.AGameObject;
+import roomescape.gameobjects.IExaminable;
 
 import java.util.List;
 
-public class Room implements ILookable {
+public class Room implements IExaminable {
     private List<AGameObject> objects;
 
     @Override

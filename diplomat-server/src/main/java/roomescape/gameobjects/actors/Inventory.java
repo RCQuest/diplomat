@@ -1,4 +1,6 @@
-package roomescape;
+package roomescape.gameobjects.actors;
+
+import roomescape.gameobjects.IObtainable;
 
 import java.util.List;
 
