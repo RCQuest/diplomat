@@ -1,6 +1,8 @@
 package cli;
 
-public class Response {
+import eventsystem.events.core.EventArgs;
+
+public class Response{
 
     private String content;
 
