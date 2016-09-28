@@ -13,4 +13,8 @@ public class Inventory {
     public void AddToInventory(IObtainable object) {
         this.obtainedObjects.add(object);
     }
+
+    public void Discard(IObtainable obj) {
+        obtainedObjects.remove(obj);
+    }
 }

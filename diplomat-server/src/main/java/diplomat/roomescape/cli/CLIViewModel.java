@@ -17,8 +17,7 @@ public class CLIViewModel implements IRoomEscapeViewModel {
 
     @Override
     public void ShowLookResult(IExaminable at) {
-        at = () -> "hello world!";
-        cli.setResponse(at.Describe());
+        this.cli.setResponse(at.Describe());
     }
 
     @Override

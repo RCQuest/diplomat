@@ -4,6 +4,7 @@ import diplomat.cli.Command;
 import diplomat.cli.CommandController;
 import diplomat.eventsystem.events.core.IEventListener;
 import diplomat.roomescape.GameController;
+import diplomat.roomescape.IRoomEscapeViewModel;
 import diplomat.roomescape.commands.IGameCommand;
 import diplomat.roomescape.gameobjects.actors.Player;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,10 @@ public class CLIGameBootstrap implements IEventListener<Command>{
 
     @Autowired
     public CLIGameBootstrap(CommandController cli){
+        IRoomEscapeViewModel viewModel = new CLIViewModel(cli);
         this.cli = cli;
         this.commandFactory = new CLICommandFactory();
-        this.game = new GameController(
-                new CLIViewModel(this.cli),
-                new Player()
-        );
+        this.game = new GameController(viewModel);
         this.cli.commandEvent.subscribe(this);
     }
 
