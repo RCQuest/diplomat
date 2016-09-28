@@ -7,7 +7,9 @@ import eventsystem.events.core.IWithEvents;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @Controller
 public class CommandController implements IWithEvents{
 
@@ -15,6 +17,7 @@ public class CommandController implements IWithEvents{
 
     @MessageMapping("/command")
     public void receiveCommand(Command command) throws Exception {
+        System.out.println(command.getCommandString());
         commandEvent.sendEvent(this,command);
     }
 
