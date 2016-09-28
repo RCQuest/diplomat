@@ -18,6 +18,7 @@ public class CommandController implements IWithEvents{
     @MessageMapping("/command")
     @SendTo("/topic/response")
     public Response receiveCommand(Command command) throws Exception {
+        currentResponse = new Response("");
         System.out.println(command.getCommandString());
         commandEvent.sendEvent(this,command);
         return currentResponse;
