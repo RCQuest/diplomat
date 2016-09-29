@@ -2,9 +2,12 @@ package diplomat.roomescape;
 
 import diplomat.roomescape.commands.IGameCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
+import diplomat.roomescape.gameobjects.actors.Door;
+import diplomat.roomescape.gameobjects.actors.Key;
 import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.gameobjects.actors.Room;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +18,10 @@ public class GameController {
 
     public GameController(IRoomEscapeViewModel viewModel) {
         this.viewModel = viewModel;
-        List<AGameObject> objects = new ArrayList<>();
-
+        ArrayList<AGameObject> objects = new ArrayList<>();
+        objects.add(new Door());
+        objects.add(new Key());
         this.player = new Player(new Room(objects));
-        player.GetRoom().Describe();
     }
 
     public void HandleCommand(IGameCommand command) {
@@ -27,5 +30,13 @@ public class GameController {
 
     public Player GetPlayer() {
         return player;
+    }
+
+    public ArrayList<AGameObject> GetAllGameObjects() {
+        return player.GetRoom().GetAllRoomObjects();
+    }
+
+    public ArrayList<AGameObject> GetPlayerInventory() {
+        return player.GetInventoryObjects();
     }
 }

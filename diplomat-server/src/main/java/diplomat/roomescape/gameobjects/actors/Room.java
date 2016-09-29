@@ -3,12 +3,13 @@ package diplomat.roomescape.gameobjects.actors;
 import diplomat.roomescape.gameobjects.AGameObject;
 import diplomat.roomescape.gameobjects.IExaminable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Room implements IExaminable {
-    private List<AGameObject> objects;
+    private ArrayList<AGameObject> objects;
 
-    public Room(List<AGameObject> objects) {
+    public Room(ArrayList<AGameObject> objects) {
         this.objects = objects;
         System.out.println("Room created");
     }
@@ -23,5 +24,9 @@ public class Room implements IExaminable {
             .filter(x -> x.GetName().equals(name))
             .findFirst()
             .get();
+    }
+
+    public ArrayList<AGameObject> GetAllRoomObjects() {
+        return objects;
     }
 }

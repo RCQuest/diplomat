@@ -11,6 +11,10 @@ import diplomat.roomescape.gameobjects.IUsableTarget;
 public class Door extends AGameObject implements IUsableTarget, IExaminable, IStandaloneUsable {
     private boolean locked = true;
 
+    public Door() {
+        super("door");
+    }
+
     @Override
     public String Describe() {
         if(this.locked){
