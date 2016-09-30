@@ -1,5 +1,6 @@
 package diplomat.roomescape.cli.commands.token;
 
+import diplomat.roomescape.cli.commands.InvalidCommandException;
 import diplomat.roomescape.commands.IGameCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
 
@@ -13,8 +14,13 @@ public class GameObjectTokenStrategy extends ACommandTokenStrategy {
         this.gameObject = gameObject;
     }
 
+    public AGameObject GetGameObject() throws InvalidCommandException {
+        if(gameObject==null) throw new InvalidCommandException();
+        return gameObject;
+    }
+
     @Override
-    public IGameCommand collapseToCommand() {
-        return null;
+    public IGameCommand collapseToCommand() throws InvalidCommandException {
+        throw new InvalidCommandException();
     }
 }

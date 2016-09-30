@@ -6,6 +6,7 @@ import diplomat.eventsystem.events.core.IEventListener;
 import diplomat.roomescape.GameController;
 import diplomat.roomescape.IRoomEscapeViewModel;
 import diplomat.roomescape.cli.commands.CLICommandFactory;
+import diplomat.roomescape.cli.commands.InvalidCommandException;
 import diplomat.roomescape.commands.IGameCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,13 @@ public class CLIGameBootstrap implements IEventListener<Command>{
     @Override
     public void onReceived(Object sender, Command args) {
         this.commandFactory.UpdateAvailableGameObjects(game.GetAllGameObjects(),game.GetPlayerInventory());
-        IGameCommand command = this.commandFactory.CreateCommand(args.getCommandString(),game.GetPlayer());
+        IGameCommand command;
+        try {
+            command = this.commandFactory.CreateCommand(args.getCommandString());
+        } catch (InvalidCommandException e) {
+            this.cli.setResponse("Invalid command.");
+            return;
+        }
         game.HandleCommand(command);
 
     }

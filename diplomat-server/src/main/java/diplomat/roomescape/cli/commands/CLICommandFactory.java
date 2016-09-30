@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * Created by Rachel on 21/09/2016.
  */
 public class CLICommandFactory {
-//TODO: remove donothingcommands and raise exception instead
+
     private final HashMap<String,Class<? extends ACommandTokenStrategy>> commandTokenStrategies = new HashMap<String,Class<? extends ACommandTokenStrategy>>(){{
         put("look",LookTokenStrategy.class);
         put("use",UseTokenStrategy.class);
@@ -25,10 +25,10 @@ public class CLICommandFactory {
     private ArrayList<AGameObject> inventoryObjects;
 
 
-    public IGameCommand CreateCommand(String commandString, Player player){
+    public IGameCommand CreateCommand(String commandString) throws InvalidCommandException {
         String[] commandTokens = tokenize(commandString);
 
-        if(!areValidTokens(commandTokens)) return new DoNothingCommand();
+        if(!areValidTokens(commandTokens)) throw new InvalidCommandException();
 
         String firstToken = commandTokens[0];
 
@@ -39,17 +39,16 @@ public class CLICommandFactory {
             for (int i = 1; i < commandTokens.length; i++) {
                 String commandToken = commandTokens[i];
                 if(isCommandToken(commandToken)) {
-                    strategySequence.appendToSequence(commandTokenStrategies.get(commandToken).newInstance());
+                    strategySequence.AssignAsProperty(commandTokenStrategies.get(commandToken).newInstance());
                 } else {
-                    strategySequence.appendToSequence(new GameObjectTokenStrategy(getGameObject(commandToken)));
+                    strategySequence.AssignAsProperty(new GameObjectTokenStrategy(getGameObject(commandToken)));
                 }
             }
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-            return new DoNothingCommand();
+            throw new InvalidCommandException();
         }
 
-//        return new LookCommand(player.GetRoom());
         return strategySequence.collapseToCommand();
     }
 
