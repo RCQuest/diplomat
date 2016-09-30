@@ -5,32 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f9fb16a-7f05-465d-9cb9-ff734abb2dec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/CLICommandFactory.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/cli/CommandController.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/cli/CommandController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/GameController.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/GameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/cli/CLICommandFactory.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/cli/CLICommandFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/cli/CLIGameBootstrap.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/cli/CLIGameBootstrap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/AGameObject.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/AGameObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Door.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Door.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Inventory.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Inventory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Key.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Key.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Player.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Room.class" afterPath="$PROJECT_DIR$/build/classes/main/diplomat/roomescape/gameobjects/actors/Room.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ACommandTokenStrategy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/GameObjectTokenStrategy.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/CLIGameBootstrap.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/CLIGameBootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/AGameObject.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/AGameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Door.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Door.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Inventory.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Inventory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Key.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Key.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Player.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Room.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Room.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java" />
     </list>
     <ignored path="diplomat-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,22 +49,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/GameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1030#1031#0" expanded="true" />
-                <element signature="e#1089#1090#0" expanded="true" />
-                <element signature="e#1147#1148#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Inventory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Inventory.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,12 +65,9 @@
       <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-              <folding>
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#780#781#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,9 +75,12 @@
       <file leaf-file-name="CLICommandFactory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
-              <folding />
+            <state relative-caret-position="-288">
+              <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+              <folding>
+                <element signature="e#2590#2591#0" expanded="true" />
+                <element signature="e#2667#2668#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,9 +88,12 @@
       <file leaf-file-name="EveryTokenStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
+              <folding>
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#299#300#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,9 +101,12 @@
       <file leaf-file-name="PickupTokenStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+              <folding>
+                <element signature="e#273#274#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,9 +114,12 @@
       <file leaf-file-name="OnTokenStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+              <folding>
+                <element signature="e#269#270#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,9 +127,12 @@
       <file leaf-file-name="UseTokenStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+              <folding>
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#297#298#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,18 +140,36 @@
       <file leaf-file-name="LookTokenStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="126">
+              <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+              <folding>
+                <element signature="e#271#272#0" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ICommandTokenStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java">
+      <file leaf-file-name="GameObjectTokenStrategy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/GameObjectTokenStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="198">
+              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#471#472#0" expanded="true" />
+                <element signature="e#498#499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ACommandTokenStrategy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ACommandTokenStrategy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -520,12 +518,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/main/ObjState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/ObjStateEventArgs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/EventArgs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/EventSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/IEventListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/IEventSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/IWithEvents.java" />
         <option value="$PROJECT_DIR$/src/main/java/eventsystem/events/core/SimpleEvent.java" />
@@ -563,12 +555,18 @@
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Inventory.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/CLICommandFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/ICommandTokenStrategy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/LookTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/UseTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/OnTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/PickupTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/EveryTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ACommandTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/GameObjectTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java" />
       </list>
@@ -1341,7 +1339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1475104890803</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Worked on the command factory.">
+      <created>1475166450931</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1475166450932</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1404,13 +1409,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/eventsystem/main/ObjState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/eventsystem/events/core/IEventListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1671,11 +1669,11 @@
         <state relative-caret-position="228">
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#532#533#0" expanded="false" />
+            <element signature="e#562#563#0" expanded="false" />
+            <element signature="e#626#627#0" expanded="false" />
+            <element signature="e#677#678#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1706,9 +1704,9 @@
         <state relative-caret-position="252">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#495#496#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1718,8 +1716,8 @@
         <state relative-caret-position="162">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="false" />
+            <element signature="e#269#270#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1732,17 +1730,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#701#702#0" expanded="true" />
             <element signature="e#761#762#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1772,59 +1759,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ICommandTokenStrategy.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/gameobjects/actors/Room.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="270">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/ACommandTokenStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/EveryTokenStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
+          <folding>
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/GameObjectTokenStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/LookTokenStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding>
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/OnTokenStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+          <folding>
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/PickupTokenStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+          <folding>
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/token/UseTokenStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/diplomat/roomescape/cli/commands/CLICommandFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
-          <folding />
+        <state relative-caret-position="-288">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+          <folding>
+            <element signature="e#2590#2591#0" expanded="true" />
+            <element signature="e#2667#2668#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

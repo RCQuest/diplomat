@@ -5,7 +5,6 @@ import diplomat.roomescape.commands.DoNothingCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
 import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.commands.IGameCommand;
-import diplomat.roomescape.commands.LookCommand;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,13 +13,13 @@ import java.util.stream.Collectors;
  * Created by Rachel on 21/09/2016.
  */
 public class CLICommandFactory {
-
-    private final HashMap<String,ICommandTokenStrategy> commandTokenStrategies = new HashMap<String,ICommandTokenStrategy>(){{
-        put("look",new LookTokenStrategy());
-        put("use",new UseTokenStrategy());
-        put("on",new OnTokenStrategy());
-        put("pickup",new PickupTokenStrategy());
-        put("every",new EveryTokenStrategy());
+//TODO: remove donothingcommands and raise exception instead
+    private final HashMap<String,Class<? extends ACommandTokenStrategy>> commandTokenStrategies = new HashMap<String,Class<? extends ACommandTokenStrategy>>(){{
+        put("look",LookTokenStrategy.class);
+        put("use",UseTokenStrategy.class);
+        put("on",OnTokenStrategy.class);
+        put("pickup",PickupTokenStrategy.class);
+        put("every",EveryTokenStrategy.class);
     }};
     private ArrayList<AGameObject> roomObjects;
     private ArrayList<AGameObject> inventoryObjects;
@@ -31,11 +30,27 @@ public class CLICommandFactory {
 
         if(!areValidTokens(commandTokens)) return new DoNothingCommand();
 
-        for(String commandToken : commandTokens){
+        String firstToken = commandTokens[0];
 
+        ACommandTokenStrategy strategySequence;
+
+        try {
+            strategySequence = commandTokenStrategies.get(firstToken).newInstance();
+            for (int i = 1; i < commandTokens.length; i++) {
+                String commandToken = commandTokens[i];
+                if(isCommandToken(commandToken)) {
+                    strategySequence.appendToSequence(commandTokenStrategies.get(commandToken).newInstance());
+                } else {
+                    strategySequence.appendToSequence(new GameObjectTokenStrategy(getGameObject(commandToken)));
+                }
+            }
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+            return new DoNothingCommand();
         }
 
-        return new LookCommand(player.GetRoom());
+//        return new LookCommand(player.GetRoom());
+        return strategySequence.collapseToCommand();
     }
 
     private String[] tokenize(String commandString){
@@ -51,6 +66,10 @@ public class CLICommandFactory {
             if(!isValidToken(token)) return false;
         }
         return true;
+    }
+
+    private boolean isCommandToken(String token){
+        return Arrays.asList(getValidCommandTokens()).contains(token);
     }
 
     private boolean isValidToken(String token) {
@@ -71,6 +90,16 @@ public class CLICommandFactory {
             .collect(Collectors.toList());
         System.out.println(names.toString());
         return names;
+    }
+
+    private AGameObject getGameObject(String gameObjectName) {
+        ArrayList<AGameObject> objects = new ArrayList<>();
+        objects.addAll(this.inventoryObjects);
+        objects.addAll(this.roomObjects);
+        return objects.stream()
+                .filter(x -> x.GetName().equals(gameObjectName))
+                .findFirst()
+                .get();
     }
 
     private String[] getValidCommandTokens(){
