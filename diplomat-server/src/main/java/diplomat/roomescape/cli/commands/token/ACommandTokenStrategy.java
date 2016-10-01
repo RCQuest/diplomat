@@ -9,12 +9,14 @@ import diplomat.roomescape.commands.IGameCommand;
 public abstract class ACommandTokenStrategy {
     protected ACommandTokenStrategy next;
 
-    protected void appendToSequence(ACommandTokenStrategy nextStrategy) {
-        if(this.next==null) this.next = nextStrategy;
-        else this.next.appendToSequence(nextStrategy);
+    protected void appendToSequence(ACommandTokenStrategy nextStrategy) throws InvalidCommandException {
+        if(this.next==null)
+            this.next = nextStrategy;
+        else
+            this.next.AssignAsProperty(nextStrategy);
     }
 
-    public void AssignAsProperty(ACommandTokenStrategy nextStrategy){
+    public void AssignAsProperty(ACommandTokenStrategy nextStrategy) throws InvalidCommandException {
         appendToSequence(nextStrategy);
     }
 

@@ -34,6 +34,7 @@ public class CLIGameBootstrap implements IEventListener<Command>{
             command = this.commandFactory.CreateCommand(args.getCommandString());
         } catch (InvalidCommandException e) {
             this.cli.setResponse("Invalid command.");
+            e.printStackTrace();
             return;
         }
         game.HandleCommand(command);

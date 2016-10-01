@@ -35,9 +35,13 @@ public class CLICommandFactory {
         ACommandTokenStrategy strategySequence;
 
         try {
-            strategySequence = commandTokenStrategies.get(firstToken).newInstance();
+            if(isCommandToken(firstToken))
+                strategySequence = commandTokenStrategies.get(firstToken).newInstance();
+            else
+                throw new InvalidCommandException();
             for (int i = 1; i < commandTokens.length; i++) {
                 String commandToken = commandTokens[i];
+                System.out.println(commandToken);
                 if(isCommandToken(commandToken)) {
                     strategySequence.AssignAsProperty(commandTokenStrategies.get(commandToken).newInstance());
                 } else {

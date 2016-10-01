@@ -8,10 +8,14 @@ import diplomat.roomescape.cli.commands.InvalidCommandException;
 public abstract class ACommandTokenSingleOperandStrategy extends ACommandTokenStrategy {
     protected GameObjectTokenStrategy objectStrategy;
 
-    public void AssignAsProperty(GameObjectTokenStrategy objectStrategy) throws InvalidCommandException {
-        if(this.objectStrategy==null) this.objectStrategy = objectStrategy;
-        else if(this.next!=null) this.next.AssignAsProperty(objectStrategy);
-        else throw new InvalidCommandException();
+    @Override
+    public void AssignAsProperty(ACommandTokenStrategy strategy) throws InvalidCommandException {
+        System.out.println("AssignAsProperty");
+        boolean isGameObjectStrategy = GameObjectTokenStrategy.class.isInstance(strategy);
+        if(isGameObjectStrategy&&this.objectStrategy==null)
+            this.objectStrategy = (GameObjectTokenStrategy)strategy;
+        else
+            this.appendToSequence(strategy);
     }
 
     public GameObjectTokenStrategy GetObjectStrategy() throws InvalidCommandException {
