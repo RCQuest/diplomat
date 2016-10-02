@@ -9,10 +9,11 @@ import diplomat.roomescape.gameobjects.*;
  * Created by rachelcabot on 28/09/2016.
  */
 public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsableTarget, IExaminable {
-    private boolean locked = true;
+    private boolean locked;
 
     public Door() {
         super("door");
+        this.locked = true;
     }
 
     @Override

@@ -25,11 +25,8 @@ var diplomat = angular.module('diplomat', [
 		    };
 
 			$scope.outputLines = [
-				"hello world",
-				"this is a new line",
-				"and this one",
-				"anD THIS IS A REALLY LONG LINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-			]
+				"Welcome!"
+			];
 			$scope.addOutputLine = (line)=>{
 				sendCommand(line);
 				if(line==="") line = "_";
