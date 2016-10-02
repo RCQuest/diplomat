@@ -2,14 +2,13 @@ package diplomat.roomescape;
 
 import diplomat.roomescape.commands.IGameCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
+import diplomat.roomescape.gameobjects.AGameOverInvoker;
 import diplomat.roomescape.gameobjects.actors.Door;
 import diplomat.roomescape.gameobjects.actors.Key;
 import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.gameobjects.actors.Room;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GameController {
 
@@ -22,14 +21,20 @@ public class GameController {
         objects.add(new Door());
         objects.add(new Key());
         this.player = new Player(new Room(objects));
+        viewModel.SetPlayer(this.player);
+        objects.add(this.player.GetInventory());
+        subscribeToGameOverCallbacks();
+    }
+
+    private void subscribeToGameOverCallbacks() {
+        player.GetRoom().GetAllRoomObjects().stream().forEach(object->{
+            if(AGameOverInvoker.class.isInstance(object))
+                ((AGameOverInvoker)object).SetGameOverCallback(() -> OnGameOver());
+        });
     }
 
     public void HandleCommand(IGameCommand command) {
         command.Execute(player,viewModel);
-    }
-
-    public Player GetPlayer() {
-        return player;
     }
 
     public ArrayList<AGameObject> GetAllGameObjects() {
@@ -38,5 +43,10 @@ public class GameController {
 
     public ArrayList<AGameObject> GetPlayerInventory() {
         return player.GetInventoryObjects();
+    }
+
+    public void OnGameOver() {
+        viewModel.ShowGameComplete();
+        System.out.println("Game over!");
     }
 }

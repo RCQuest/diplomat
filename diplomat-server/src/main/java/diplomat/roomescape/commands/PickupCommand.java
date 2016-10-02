@@ -1,19 +1,19 @@
 package diplomat.roomescape.commands;
 
 import diplomat.roomescape.IRoomEscapeViewModel;
-import diplomat.roomescape.gameobjects.IObtainable;
+import diplomat.roomescape.gameobjects.AObtainable;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 public class PickupCommand implements IGameCommand {
-    private IObtainable object;
+    private AObtainable object;
 
-    public PickupCommand(IObtainable object) {
+    public PickupCommand(AObtainable object) {
         this.object = object;
     }
 
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
+        viewModel.ShowPickupResult(object,player);
         player.Pickup(object);
-        viewModel.ShowPickupResult(player);
     }
 }

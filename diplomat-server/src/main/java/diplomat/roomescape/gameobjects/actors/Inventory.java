@@ -1,7 +1,8 @@
 package diplomat.roomescape.gameobjects.actors;
 
 import diplomat.roomescape.gameobjects.AGameObject;
-import diplomat.roomescape.gameobjects.IObtainable;
+import diplomat.roomescape.gameobjects.IExaminable;
+import diplomat.roomescape.gameobjects.AObtainable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +11,20 @@ import java.util.stream.Collectors;
 /**
  * Created by Rachel on 21/09/2016.
  */
-public class Inventory {
+public class Inventory extends AGameObject implements IExaminable {
 
-    public ArrayList<IObtainable> obtainedObjects;
+    public ArrayList<AObtainable> obtainedObjects;
 
     public Inventory(){
+        super("inventory");
         this.obtainedObjects = new ArrayList<>();
     }
 
-    public void AddToInventory(IObtainable object) {
+    public void AddToInventory(AObtainable object) {
         this.obtainedObjects.add(object);
     }
 
-    public void Discard(IObtainable obj) {
+    public void Discard(AObtainable obj) {
         obtainedObjects.remove(obj);
     }
 
@@ -31,5 +33,20 @@ public class Inventory {
                 .map(object -> (AGameObject)object)
                 .collect(Collectors.toList());
         return (ArrayList<AGameObject>) objects;
+    }
+
+    @Override
+    public String Describe() {
+        String description;
+        if(obtainedObjects.isEmpty())
+            description = "You have no inventory items.";
+        else
+            description = "You have the following items in your inventory: "+toString();
+        return description;
+    }
+
+    @Override
+    public String toString(){
+        return obtainedObjects.toString();
     }
 }

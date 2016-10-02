@@ -20,7 +20,7 @@ public class UseOnCommand implements IGameCommand {
 
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
-        object.Use(target,player);
         viewModel.ShowUseOnResult(object,target);
+        object.Use(target,player);
     }
 }

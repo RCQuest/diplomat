@@ -8,6 +8,7 @@ import diplomat.roomescape.IRoomEscapeViewModel;
 import diplomat.roomescape.cli.commands.CLICommandFactory;
 import diplomat.roomescape.cli.commands.InvalidCommandException;
 import diplomat.roomescape.commands.IGameCommand;
+import diplomat.roomescape.gameobjects.actors.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,7 @@ public class CLIGameBootstrap implements IEventListener<Command>{
         try {
             command = this.commandFactory.CreateCommand(args.getCommandString());
         } catch (InvalidCommandException e) {
-            this.cli.setResponse("Invalid command.");
+            this.cli.AppendToResponse("Invalid command.");
             e.printStackTrace();
             return;
         }

@@ -1,14 +1,14 @@
 package diplomat.roomescape.gameobjects.actors;
 
-import diplomat.roomescape.gameobjects.AGameObject;
-import diplomat.roomescape.gameobjects.IExaminable;
-import diplomat.roomescape.gameobjects.IStandaloneUsable;
-import diplomat.roomescape.gameobjects.IUsableTarget;
+import diplomat.eventsystem.events.core.Event;
+import diplomat.eventsystem.events.core.EventSystem;
+import diplomat.eventsystem.events.core.IWithEvents;
+import diplomat.roomescape.gameobjects.*;
 
 /**
  * Created by rachelcabot on 28/09/2016.
  */
-public class Door extends AGameObject implements IUsableTarget, IExaminable, IStandaloneUsable {
+public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsableTarget, IExaminable {
     private boolean locked = true;
 
     public Door() {
@@ -17,7 +17,7 @@ public class Door extends AGameObject implements IUsableTarget, IExaminable, ISt
 
     @Override
     public String Describe() {
-        if(this.locked){
+        if(locked){
             return "It's locked.";
         }
         return "It's unlocked.";
@@ -28,12 +28,21 @@ public class Door extends AGameObject implements IUsableTarget, IExaminable, ISt
     }
 
     @Override
-    public void Use(Player player) {
-
+    public void Use() {
+        System.out.println("Invoking callback from door...");
+        if(!locked)
+            this.gameOverCallback.Invoke();
     }
 
     @Override
     public String GetUsageDescription() {
-        return "You walk through the door.";
+        if(!locked)
+            return "You walk through the unlocked door.";
+        else
+            return "You stumble face first into the locked door.";
+    }
+
+    public boolean IsLocked() {
+        return locked;
     }
 }

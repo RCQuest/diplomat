@@ -16,7 +16,7 @@ public class Player {
         this.playerInventory = new Inventory();
     }
 
-    public void Pickup(IObtainable object) {
+    public void Pickup(AObtainable object) {
         playerInventory.AddToInventory(object);
     }
 
@@ -24,11 +24,15 @@ public class Player {
         return this.currentRoom;
     }
 
-    public void Discard(IObtainable obj) {
+    public void Discard(AObtainable obj) {
         playerInventory.Discard(obj);
     }
 
     public ArrayList<AGameObject> GetInventoryObjects() {
         return playerInventory.GetInventoryObjects();
+    }
+
+    public Inventory GetInventory() {
+        return playerInventory;
     }
 }

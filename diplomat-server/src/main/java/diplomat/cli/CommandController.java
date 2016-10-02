@@ -24,9 +24,10 @@ public class CommandController implements IWithEvents{
         return currentResponse;
     }
 
-    public void setResponse(String response){
+    public void AppendToResponse(String response){
         System.out.println(response);
-        currentResponse = new Response(response);
+        String currentResponseContent = currentResponse.getContent();
+        currentResponse = new Response(currentResponseContent+"\n"+response);
     }
 
 }
