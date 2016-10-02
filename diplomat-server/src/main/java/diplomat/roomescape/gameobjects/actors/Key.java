@@ -43,6 +43,9 @@ public class Key extends AObtainable implements IExaminable, IUsable{
 
     @Override
     public String GetObtainedDescription() {
-        return null;
+        if(!isObtained())
+            return "You pick up the key.";
+        else
+            return "You already have the key.";
     }
 }

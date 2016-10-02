@@ -10,4 +10,9 @@ public abstract class AGameObject {
     public String GetName() {
         return name;
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }
