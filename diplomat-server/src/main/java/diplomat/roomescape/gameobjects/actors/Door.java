@@ -30,7 +30,6 @@ public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsable
 
     @Override
     public void Use() {
-        System.out.println("Invoking callback from door...");
         if(!locked)
             this.gameOverCallback.Invoke();
     }

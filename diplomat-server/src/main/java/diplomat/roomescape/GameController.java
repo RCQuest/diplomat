@@ -17,12 +17,13 @@ public class GameController {
 
     public GameController(IRoomEscapeViewModel viewModel) {
         this.viewModel = viewModel;
-        ArrayList<AGameObject> objects = new ArrayList<>();
-        objects.add(new Door());
-        objects.add(new Key());
-        this.player = new Player(new Room(objects));
+        RoomFactory roomFactory = new RoomFactory();
+
+        Room room = roomFactory.CreateRoom("/keydoor.room");
+        this.player = new Player(room);
+
         viewModel.SetPlayer(this.player);
-        objects.add(this.player.GetInventory());
+        room.AddObject(this.player.GetInventory());
         subscribeToGameOverCallbacks();
     }
 
@@ -47,6 +48,5 @@ public class GameController {
 
     public void OnGameOver() {
         viewModel.ShowGameComplete();
-        System.out.println("Game over!");
     }
 }

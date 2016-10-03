@@ -45,4 +45,8 @@ public class Room extends AGameObject implements IExaminable {
         allObjects.add(this);
         return allObjects;
     }
+
+    public void AddObject(AGameObject gameObject) {
+        objects.add(gameObject);
+    }
 }

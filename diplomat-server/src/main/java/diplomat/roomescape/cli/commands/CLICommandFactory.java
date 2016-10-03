@@ -41,7 +41,6 @@ public class CLICommandFactory {
                 throw new InvalidCommandException();
             for (int i = 1; i < commandTokens.length; i++) {
                 String commandToken = commandTokens[i];
-                System.out.println(commandToken);
                 if(isCommandToken(commandToken)) {
                     strategySequence.AssignAsProperty(commandTokenStrategies.get(commandToken).newInstance());
                 } else {
@@ -91,7 +90,6 @@ public class CLICommandFactory {
         List<String> names = objects.stream()
             .map(object -> object.GetName())
             .collect(Collectors.toList());
-        System.out.println(names.toString());
         return names;
     }
 

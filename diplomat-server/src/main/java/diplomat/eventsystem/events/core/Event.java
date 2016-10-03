@@ -17,7 +17,6 @@ public class Event<TArgs extends EventArgs> implements IEventSender<TArgs> {
     public void sendEvent(Object sender, TArgs args) {
         if (listeners == null) return;
         lock();
-        System.out.println("sending event.");
         for (IEventListener<TArgs> i : listeners) {
             i.onReceived(sender, args);
 

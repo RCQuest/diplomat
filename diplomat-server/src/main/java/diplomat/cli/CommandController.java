@@ -19,13 +19,11 @@ public class CommandController implements IWithEvents{
     @SendTo("/topic/response")
     public Response receiveCommand(Command command) throws Exception {
         currentResponse = new Response("");
-        System.out.println(command.getCommandString());
         commandEvent.sendEvent(this,command);
         return currentResponse;
     }
 
     public void AppendToResponse(String response){
-        System.out.println(response);
         String currentResponseContent = currentResponse.getContent();
         currentResponse = new Response(currentResponseContent+"\n"+response);
     }

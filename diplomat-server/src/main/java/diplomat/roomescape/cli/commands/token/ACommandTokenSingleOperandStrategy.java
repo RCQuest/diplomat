@@ -10,7 +10,6 @@ public abstract class ACommandTokenSingleOperandStrategy extends ACommandTokenSt
 
     @Override
     public void AssignAsProperty(ACommandTokenStrategy strategy) throws InvalidCommandException {
-        System.out.println("AssignAsProperty");
         boolean isGameObjectStrategy = GameObjectTokenStrategy.class.isInstance(strategy);
         if(isGameObjectStrategy&&this.objectStrategy==null)
             this.objectStrategy = (GameObjectTokenStrategy)strategy;
