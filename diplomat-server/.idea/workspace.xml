@@ -1188,8 +1188,7 @@
     <MESSAGE value="Game can now be won." />
     <MESSAGE value="Inventory logic." />
     <MESSAGE value="Room description." />
-    <MESSAGE value="File reading, removed log lines." />
-    <option name="LAST_COMMIT_MESSAGE" value="File reading, removed log lines." />
+    <option name="LAST_COMMIT_MESSAGE" value="Room description." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

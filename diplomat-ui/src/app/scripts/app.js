@@ -21,16 +21,16 @@ var diplomat = angular.module('diplomat', [
 		controller:($scope,$anchorScroll,$location,$timeout)=>{
 			var gotoBottom = function() {
 				$location.hash('lastCommand');
-				$anchorScroll();
-		    };
+				$anchorScroll(); //TODO: fix!
+			};
 
 			$scope.outputLines = [
-				"Welcome!"
+				{output:"Welcome!"}
 			];
 			$scope.addOutputLine = (line)=>{
+				if(line==="") return;
 				sendCommand(line);
-				if(line==="") line = "_";
-				$scope.outputLines.push(line);
+				$scope.outputLines.push({input:line});
 				$scope.command = "";
 				$timeout(()=>{
 					gotoBottom();
@@ -45,7 +45,9 @@ var diplomat = angular.module('diplomat', [
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
                     console.log(JSON.parse(greeting.body).content);
-                    $scope.outputLines.push(JSON.parse(greeting.body).content);
+                    $scope.outputLines[$scope.outputLines.length-1].output =
+                    	(JSON.parse(greeting.body).content);
+                	gotoBottom();
                     $timeout(()=>{
 						gotoBottom();
 					});
@@ -66,7 +68,7 @@ var diplomat = angular.module('diplomat', [
         element.bind("keydown keypress", function (event) {
 			console.log("key pressed!");
 
-            if(event.which === 13) {
+            if(event.which === 13 && scope.outputLines[scope.outputLines.length-1].output) {
 				console.log("enter pressed!");
 
                 scope.$apply(function (){

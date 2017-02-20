@@ -1,12 +1,15 @@
 <div class="output-container">
-	<div class="output-pushdown">
-		<div class="output-line" 
-			 ng-repeat="line in outputLines track by $index"
-			 id="{{ $last ? 'lastCommand' : ''}}">{{line}}</div>
+	<div id="output-area" class="output-pushdown">
+		<div class="output-box" 
+			 ng-repeat="line in outputLines track by $index">
+			 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
+			 	<span class="output-line" id="{{ $last ? 'lastCommand' : ''}}">
+		 			  {{line.output}}</span>
+		</div>
 	</div>
 </div>
 <div class="command-input-container">
-	<span class="cursor">$ </span>
+	<span class="cursor">> </span>
 	<span class="command-input">
 		<input ng-model="command" 
 			   on-press-enter="addOutputLine(command)"/>
