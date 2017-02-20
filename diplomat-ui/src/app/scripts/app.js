@@ -4,6 +4,7 @@
 
 import 'angular';
 import 'angular-ui-router';
+import 'angular-sanitize';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
@@ -13,12 +14,13 @@ import templatesModule from './_templates';
 // define diplomat module
 var diplomat = angular.module('diplomat', [
   'ui.router',
+  'ngSanitize',
   templatesModule.name
 ])
 
 .directive("cli",()=>{
 	return {
-		controller:($scope,$anchorScroll,$location,$timeout)=>{
+		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
 			var gotoBottom = function() {
 				$location.hash('lastCommand');
 				$anchorScroll(); //TODO: fix!
@@ -46,7 +48,7 @@ var diplomat = angular.module('diplomat', [
                 stompClient.subscribe('/topic/response', function(greeting){
                     console.log(JSON.parse(greeting.body).content);
                     $scope.outputLines[$scope.outputLines.length-1].output =
-                    	(JSON.parse(greeting.body).content);
+                    	(JSON.parse(greeting.body).content).replace(/\n/g, "<br />");
                 	gotoBottom();
                     $timeout(()=>{
 						gotoBottom();
@@ -79,7 +81,13 @@ var diplomat = angular.module('diplomat', [
             }
         });
     };
-});
+})
+
+.filter('to_trusted', ['$sce', function($sce){
+    return function(text) {
+        return $sce.trustAsHtml(text);
+    };
+}]);
 
 // configure diplomat
 diplomat.config(config);

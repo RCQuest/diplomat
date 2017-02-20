@@ -14,6 +14,7 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.4.6",
+    "angular-sanitize": "npm:angular-sanitize@1.6.2",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",

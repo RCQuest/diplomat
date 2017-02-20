@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Objects;
+
 @CrossOrigin
 @Controller
 public class CommandController implements IWithEvents{
@@ -25,7 +27,9 @@ public class CommandController implements IWithEvents{
 
     public void AppendToResponse(String response){
         String currentResponseContent = currentResponse.getContent();
-        currentResponse = new Response(currentResponseContent+"\n"+response);
+        System.out.println(currentResponseContent);
+        String separator = currentResponseContent.equals("") ? "" : "\n";
+        currentResponse = new Response(currentResponseContent+separator+response);
     }
 
 }

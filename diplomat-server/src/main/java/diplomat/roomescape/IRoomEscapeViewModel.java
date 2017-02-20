@@ -16,4 +16,6 @@ public interface IRoomEscapeViewModel {
     void ShowGameComplete();
 
     void SetPlayer(Player player);
+
+    void ShowHelp();
 }

@@ -3,8 +3,10 @@
 		<div class="output-box" 
 			 ng-repeat="line in outputLines track by $index">
 			 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
-			 	<span class="output-line" id="{{ $last ? 'lastCommand' : ''}}">
-		 			  {{line.output}}</span>
+			 	<span ng-bind-html="line.output | to_trusted"
+			 		  class="output-line" 
+			 		  id="{{ $last ? 'lastCommand' : ''}}">
+		 		</span>
 		</div>
 	</div>
 </div>
@@ -15,3 +17,4 @@
 			   on-press-enter="addOutputLine(command)"/>
 	</span>
 </div>
+<!-- {{line.output}} -->
