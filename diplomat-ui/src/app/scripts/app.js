@@ -16,9 +16,9 @@ var diplomat = angular.module('diplomat', [
   'ui.router',
   'ngSanitize',
   templatesModule.name
-])
+]);
 
-.directive("cli",()=>{
+diplomat.directive("cli",()=>{
 	return {
 		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
 			var gotoBottom = function() {
@@ -29,15 +29,38 @@ var diplomat = angular.module('diplomat', [
 			$scope.outputLines = [
 				{output:"Welcome!"}
 			];
+
+			$scope.selectedOutput = 1;
 			$scope.addOutputLine = (line)=>{
-				if(line==="") return;
+				$scope.selectedOutput = $scope.outputLines.length;
+				console.log(line);
+				if(!line) return;
 				sendCommand(line);
 				$scope.outputLines.push({input:line});
+				$scope.selectedOutput = $scope.outputLines.length;
 				$scope.command = "";
 				$timeout(()=>{
 					gotoBottom();
 				});
 			}
+
+			$scope.decrementOutputSelection = ()=>{
+				if($scope.selectedOutput > 0) 
+					$scope.selectedOutput--;
+				$scope.command = $scope.outputLines[$scope.selectedOutput].input;
+				console.log($scope.outputLines)
+			}
+			$scope.incrementOutputSelection = ()=>{
+				$scope.selectedOutput++;
+				if($scope.selectedOutput >= $scope.outputLines.length) 
+					$scope.selectedOutput = $scope.outputLines.length;
+				else
+					$scope.command = $scope.outputLines[$scope.selectedOutput].input;
+			}
+
+			
+
+			$scope.focusInput = true;
 
 			var socket = new SockJS('http://localhost:8080/command');
 			
@@ -58,19 +81,25 @@ var diplomat = angular.module('diplomat', [
 
             var sendCommand = function(command){
             	console.log('tryina senddd '+command);
-            	stompClient.send("/diplomat/command",{},JSON.stringify({"commandString":command}));
+            	stompClient.send(
+            		"/diplomat/command",
+            		{},
+            		JSON.stringify({
+            			"commandString":command
+            		}));
             	
             };
 		},
 		templateUrl: "scripts/cli.html"
 	}
-})
-.directive('onPressEnter', function () {
+});
+diplomat.directive('onPressEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
-			console.log("key pressed!");
+			
 
-            if(event.which === 13 && scope.outputLines[scope.outputLines.length-1].output) {
+            if(event.which === 13 && 
+            	scope.outputLines[scope.outputLines.length-1].output /*bit of a hack*/) {
 				console.log("enter pressed!");
 
                 scope.$apply(function (){
@@ -81,11 +110,61 @@ var diplomat = angular.module('diplomat', [
             }
         });
     };
-})
+});
 
-.filter('to_trusted', ['$sce', function($sce){
+diplomat.directive('onPressDown', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+        	console.log("key pressed! "+ event.which);
+            if(event.which === 40) {
+            	console.log("down pressed!");
+                scope.$apply(function (){
+                    scope.$eval(attrs.onPressDown);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+diplomat.directive('onPressUp', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+
+            if(event.which === 38) {
+				console.log("up pressed!");
+
+                scope.$apply(function (){
+                    scope.$eval(attrs.onPressUp);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+diplomat.filter('to_trusted', ['$sce', function($sce){
     return function(text) {
         return $sce.trustAsHtml(text);
+    };
+}]);
+
+diplomat.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {
+    return {
+        //scope: true,   // optionally create a child scope
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.focusMe);
+            scope.$watch(model, function (value) {
+                console.log('value=', value);
+                if (value === true) {
+                    $timeout(function () {
+                        element[0].focus();
+                    });
+                }
+            });
+        }
     };
 }]);
 
@@ -94,5 +173,5 @@ diplomat.config(config);
 
 // bootstrap diplomat
 angular.element(document).ready(function() {
-  angular.bootstrap(document, [diplomat.name]);
+	angular.bootstrap(document, [diplomat.name]);
 });
