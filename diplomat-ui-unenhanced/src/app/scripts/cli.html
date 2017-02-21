@@ -1,0 +1,20 @@
+<div class="output-container">
+	<div id="output-area" class="output-pushdown">
+		<div class="output-box" 
+			 ng-repeat="line in outputLines track by $index">
+			 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
+			 	<span ng-bind-html="line.output | to_trusted"
+			 		  class="output-line" 
+			 		  id="{{ $last ? 'lastCommand' : ''}}">
+		 		</span>
+		</div>
+	</div>
+</div>
+<div class="command-input-container">
+	<span class="cursor">> </span>
+	<span class="command-input">
+		<input ng-model="command" 
+			   on-press-enter="addOutputLine(command)"/>
+	</span>
+</div>
+<!-- {{line.output}} -->
