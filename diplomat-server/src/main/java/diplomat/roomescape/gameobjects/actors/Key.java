@@ -42,6 +42,18 @@ public class Key extends AObtainable implements IExaminable, IUsable{
     }
 
     @Override
+    public void UnUse(IUsableTarget target, Player player) {
+        if(Door.class.isInstance(target)){
+            if(!((Door)target).IsLocked()){
+                Door door = (Door)target;
+                door.Unlock();
+            }
+            if(!isObtained())
+                player.Pickup(this);
+        }
+    }
+
+    @Override
     public String GetObtainedDescription() {
         if(!isObtained())
             return "You pick up the key.";

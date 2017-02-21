@@ -11,4 +11,9 @@ public class HelpCommand implements IGameCommand {
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
         viewModel.ShowHelp();
     }
+
+    @Override
+    public void Undo(Player player) {
+
+    }
 }

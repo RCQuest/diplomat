@@ -19,4 +19,9 @@ public class UseCommand implements IGameCommand {
         viewModel.ShowUseResult(object);
         object.Use();
     }
+
+    @Override
+    public void Undo(Player player) {
+        object.UnUse();
+    }
 }

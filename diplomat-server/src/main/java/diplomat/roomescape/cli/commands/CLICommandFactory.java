@@ -21,6 +21,7 @@ public class CLICommandFactory {
         put("pickup",PickupTokenStrategy.class);
         put("every",EveryTokenStrategy.class);
         put("help", HelpTokenStrategy.class);
+        put("undo", UndoTokenStrategy.class);
     }};
     private ArrayList<AGameObject> roomObjects;
     private ArrayList<AGameObject> inventoryObjects;

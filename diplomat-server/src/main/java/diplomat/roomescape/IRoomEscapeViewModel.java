@@ -18,4 +18,6 @@ public interface IRoomEscapeViewModel {
     void SetPlayer(Player player);
 
     void ShowHelp();
+
+    void ShowUndoResult();
 }

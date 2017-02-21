@@ -8,4 +8,5 @@ import diplomat.roomescape.gameobjects.actors.Player;
 public interface IStandaloneUsable {
     void Use();
     String GetUsageDescription();
+    void UnUse();
 }

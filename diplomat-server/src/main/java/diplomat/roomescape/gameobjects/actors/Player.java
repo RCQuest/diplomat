@@ -1,8 +1,11 @@
 package diplomat.roomescape.gameobjects.actors;
 
-import diplomat.roomescape.gameobjects.*;
+import diplomat.roomescape.commands.IGameCommand;
+import diplomat.roomescape.gameobjects.AGameObject;
+import diplomat.roomescape.gameobjects.AObtainable;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * Created by Rachel on 21/09/2016.
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private Inventory playerInventory;
+    private Stack<IGameCommand> commandHistory;
 
     public Player(Room initialRoom){
         this.currentRoom = initialRoom;
@@ -34,5 +38,15 @@ public class Player {
 
     public Inventory GetInventory() {
         return playerInventory;
+    }
+
+    public void UndoLastCommand() {
+        IGameCommand lastCommand = commandHistory.pop();
+        lastCommand.Undo(this);
+    }
+
+    public void PutDown(AObtainable object) {
+        playerInventory.Discard(object);
+        currentRoom.AddObject(object);
     }
 }

@@ -44,10 +44,6 @@
 	color: white;
 }
 
-.output-line {
-	display: block;
-	padding: 10px 5px;
-}
 
 .command-input-container{
 	position:relative;
@@ -74,5 +70,14 @@ input:focus {outline: none; }
 
 body{
 	background: black;
+}
+
+.selected-output{
+	outline: aquamarine 1px solid;
+}
+
+.output-line {
+	display: block;
+	padding: 10px 5px;
 }
 

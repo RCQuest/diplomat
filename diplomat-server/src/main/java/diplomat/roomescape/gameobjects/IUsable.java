@@ -9,4 +9,6 @@ public interface IUsable {
     void Use(IUsableTarget target,Player player);
 
     String GetUsageDescription(IUsableTarget target);
+
+    void UnUse(IUsableTarget target, Player player);
 }

@@ -16,4 +16,9 @@ public class PickupCommand implements IGameCommand {
         viewModel.ShowPickupResult(object,player);
         player.Pickup(object);
     }
+
+    @Override
+    public void Undo(Player player) {
+        player.PutDown(object);
+    }
 }

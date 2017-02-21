@@ -42,6 +42,11 @@ public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsable
             return "You stumble face first into the locked door.";
     }
 
+    @Override
+    public void UnUse() {
+        //TODO: eek!
+    }
+
     public boolean IsLocked() {
         return locked;
     }

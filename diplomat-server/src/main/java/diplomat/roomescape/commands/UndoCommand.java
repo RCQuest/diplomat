@@ -4,16 +4,17 @@ import diplomat.roomescape.IRoomEscapeViewModel;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 /**
- * Created by rachelcabot on 28/09/2016.
+ * Created by rachelcabot on 21/02/2017.
  */
-public class DoNothingCommand implements IGameCommand {
+public class UndoCommand implements IGameCommand {
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
-        return;
+        viewModel.ShowUndoResult();
+        player.UndoLastCommand();
     }
 
     @Override
     public void Undo(Player player) {
-
+        System.err.println("This should never happen!");
     }
 }
