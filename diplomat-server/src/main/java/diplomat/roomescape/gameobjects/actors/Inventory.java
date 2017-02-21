@@ -27,6 +27,7 @@ public class Inventory extends AGameObject implements IExaminable {
 
     public void Discard(AObtainable obj) {
         obtainedObjects.remove(obj);
+        obj.setObtained(false);
     }
 
     public ArrayList<AGameObject> GetInventoryObjects() {

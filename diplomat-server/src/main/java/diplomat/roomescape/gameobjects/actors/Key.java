@@ -46,7 +46,7 @@ public class Key extends AObtainable implements IExaminable, IUsable{
         if(Door.class.isInstance(target)){
             if(!((Door)target).IsLocked()){
                 Door door = (Door)target;
-                door.Unlock();
+                door.Lock();
             }
             if(!isObtained())
                 player.Pickup(this);

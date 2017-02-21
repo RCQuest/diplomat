@@ -50,4 +50,8 @@ public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsable
     public boolean IsLocked() {
         return locked;
     }
+
+    public void Lock() {
+        this.locked = true;
+    }
 }

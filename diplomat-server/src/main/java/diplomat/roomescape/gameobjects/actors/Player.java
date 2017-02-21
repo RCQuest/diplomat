@@ -42,13 +42,14 @@ public class Player {
     }
 
     public void UndoLastCommand() {
-        IGameCommand lastCommand = commandHistory.pop();
-        lastCommand.Undo(this);
+        if(!commandHistory.isEmpty()) {
+            IGameCommand lastCommand = commandHistory.pop();
+            lastCommand.Undo(this);
+        }
     }
 
     public void PutDown(AObtainable object) {
         playerInventory.Discard(object);
-        currentRoom.AddObject(object);
     }
 
     public void Store(IGameCommand command) {
