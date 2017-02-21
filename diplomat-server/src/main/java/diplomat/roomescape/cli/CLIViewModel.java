@@ -7,6 +7,7 @@ import diplomat.roomescape.gameobjects.actors.Player;
 
 public class CLIViewModel implements IRoomEscapeViewModel {
     private static String helpText = "Possible commands:\n look _\n use _\n use _ on _\n pickup _\n help";
+    private static String undoneText = "undone";
     private CommandController cli;
     private Player player;
 
@@ -46,5 +47,10 @@ public class CLIViewModel implements IRoomEscapeViewModel {
     @Override
     public void ShowHelp() {
         this.cli.AppendToResponse(CLIViewModel.helpText);
+    }
+
+    @Override
+    public void ShowUndoResult() {
+        this.cli.AppendToResponse(CLIViewModel.undoneText);
     }
 }

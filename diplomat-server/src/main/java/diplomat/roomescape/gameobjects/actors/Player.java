@@ -18,6 +18,7 @@ public class Player {
     public Player(Room initialRoom){
         this.currentRoom = initialRoom;
         this.playerInventory = new Inventory();
+        this.commandHistory = new Stack<>();
     }
 
     public void Pickup(AObtainable object) {
@@ -48,5 +49,9 @@ public class Player {
     public void PutDown(AObtainable object) {
         playerInventory.Discard(object);
         currentRoom.AddObject(object);
+    }
+
+    public void Store(IGameCommand command) {
+        commandHistory.push(command);
     }
 }

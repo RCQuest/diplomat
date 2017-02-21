@@ -1,10 +1,9 @@
 package diplomat.roomescape;
 
 import diplomat.roomescape.commands.IGameCommand;
+import diplomat.roomescape.commands.UndoCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
 import diplomat.roomescape.gameobjects.AGameOverInvoker;
-import diplomat.roomescape.gameobjects.actors.Door;
-import diplomat.roomescape.gameobjects.actors.Key;
 import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.gameobjects.actors.Room;
 
@@ -24,10 +23,10 @@ public class GameController {
 
         viewModel.SetPlayer(this.player);
         room.AddObject(this.player.GetInventory());
-        subscribeToGameOverCallbacks();
+        SubscribeToGameOverCallbacks();
     }
 
-    private void subscribeToGameOverCallbacks() {
+    private void SubscribeToGameOverCallbacks() {
         player.GetRoom().GetAllRoomObjects().stream().forEach(object->{
             if(AGameOverInvoker.class.isInstance(object))
                 ((AGameOverInvoker)object).SetGameOverCallback(() -> OnGameOver());
@@ -36,6 +35,9 @@ public class GameController {
 
     public void HandleCommand(IGameCommand command) {
         command.Execute(player,viewModel);
+        if(!UndoCommand.class.isInstance(command)){
+            player.Store(command);
+        }
     }
 
     public ArrayList<AGameObject> GetAllGameObjects() {
