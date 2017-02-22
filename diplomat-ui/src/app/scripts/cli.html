@@ -3,7 +3,7 @@
 		 class="output-pushdown">
 		<div class="output-box" 
 			 ng-repeat="line in outputLines track by $index"
-			 ng-class="{ 'selected-output': $index==selectedOutput }">
+			 ng-class="{ 'selected-output': $index==selectedOutput, 'undone-output': line.undone }">
 			 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 			 	<span ng-bind-html="line.output | to_trusted"
 			 		  class="output-line"

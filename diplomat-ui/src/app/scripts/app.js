@@ -58,6 +58,21 @@ diplomat.directive("cli",()=>{
 					$scope.command = $scope.outputLines[$scope.selectedOutput].input;
 			}
 
+			var getLastDoneCommandIndexBefore = (before)=>{
+				for (var i = before-1; i >= 0; i--) {
+					if(!$scope.outputLines[i].undone) return i;
+				}
+				return -1;
+			};
+
+			$scope.undoLastCommand = ()=>{
+				$scope.outputLines.pop(); // remove undo box
+				var lastCommandIndex = getLastDoneCommandIndexBefore($scope.outputLines.length);
+				if(lastCommandIndex==-1) return;
+				$scope.outputLines[lastCommandIndex].undone = true;
+				// $scope.outputLines[lastCommandIndex].commandBefore = ?
+			}
+
 			
 
 			$scope.focusInput = true;
@@ -69,13 +84,21 @@ diplomat.directive("cli",()=>{
 			stompClient.connect({}, function(frame) {
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
-                    console.log(JSON.parse(greeting.body).content);
-                    $scope.outputLines[$scope.outputLines.length-1].output =
-                    	(JSON.parse(greeting.body).content).replace(/\n/g, "<br />");
+                	var content = JSON.parse(greeting.body).content
+                    console.log(content);
+                	if(content==="undone"){
+            			$scope.undoLastCommand();
+                	} else {
+                		$scope.outputLines[$scope.outputLines.length-1].output =
+                    		(content).replace(/\n/g, "<br />");
+                	}
+
                 	gotoBottom();
+
                     $timeout(()=>{
 						gotoBottom();
 					});
+
                 });
             });
 
