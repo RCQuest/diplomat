@@ -58,19 +58,25 @@ diplomat.directive("cli",()=>{
 					$scope.command = $scope.outputLines[$scope.selectedOutput].input;
 			}
 
-			var getLastDoneCommandIndexBefore = (before)=>{
-				for (var i = before-1; i >= 0; i--) {
-					if(!$scope.outputLines[i].undone) return i;
-				}
-				return -1;
-			};
+			// var getLastDoneCommandIndexBefore = (before)=>{
+			// 	for (var i = before-1; i >= 0; i--) {
+			// 		if(!$scope.outputLines[i].undone) return i;
+			// 	}
+			// 	return -1;
+			// };
 
 			$scope.undoLastCommand = ()=>{
 				$scope.outputLines.pop(); // remove undo box
-				var lastCommandIndex = getLastDoneCommandIndexBefore($scope.outputLines.length);
-				if(lastCommandIndex==-1) return;
-				$scope.outputLines[lastCommandIndex].undone = true;
-				// $scope.outputLines[lastCommandIndex].commandBefore = ?
+				if($scope.outputLines.length>1){
+					var lastCommand = $scope.outputLines.pop();
+					var context = $scope.outputLines[$scope.outputLines.length-1];
+					if(Array.isArray(context.undone))
+						$scope.outputLines[$scope.outputLines.length-1].undone.push(lastCommand);
+					else
+						$scope.outputLines[$scope.outputLines.length-1].undone = [lastCommand];
+					console.log($scope.outputLines);
+				}
+				
 			}
 
 			
