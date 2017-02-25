@@ -1,17 +1,15 @@
-<script type="text/ng-template"  id="undone_item.html">
-    {{data.name}}
+<script type="text/ng-template"  
+		id="undone_item.html">
     <div class="output-box" 
 		 ng-class="{ 'selected-output': $index==selectedOutput }">
 		 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 		 	<span ng-bind-html="line.output | to_trusted"
-		 		  class="output-line"
-		 		  id="{{ $last ? 'lastCommand' : ''}}">
+		 		  class="output-line">
 	 		</span>
 	</div>
-	<div class="sub-undo-group"
-		 ng-repeat="line in line.undone track by $index"
-		 ng-include="'undone_item.html'">
-		
+	<div ng-repeat="line in line.undone track by $index"
+		 ng-include="'undone_item.html'"
+		 class="sub-undo-group">
 	</div>
 </script>
 
@@ -24,16 +22,15 @@
 				 ng-class="{ 'selected-output': $index==selectedOutput }">
 				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 				 	<span ng-bind-html="line.output | to_trusted"
-				 		  class="output-line"
-				 		  id="{{ $last ? 'lastCommand' : ''}}">
+				 		  class="output-line">
 			 		</span>
 			</div>
-			<div class="sub-undo-group"
-				 ng-repeat="line in line.undone track by $index"
-				 ng-include="'undone_item.html'">
-				
+			<div ng-repeat="line in line.undone track by $index"
+				 ng-include="'undone_item.html'"
+				 class="sub-undo-group">
 			</div>
 		</div>
+		<div id="lastCommand"></div>
 	</div>
 </div>
 <div class="command-input-container">

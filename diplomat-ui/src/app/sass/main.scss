@@ -81,10 +81,147 @@ body{
 	padding: 10px 5px;
 }
 
+.top-undo-group{
+	// display:table-cell;
+}
+
 .sub-undo-group {
-	width:50%;
 	float:right;
 	opacity: 0.4;
 	margin-top:-5px;
+	// width:50%;
+	// display: table-cell;
+}
+
+.output-line, .sub-undo-group{
+	/* one item */
+    &:first-child:nth-last-child(1) {
+      width: 100%;
+    }
+    
+    /* Two items */
+    &:first-child:nth-last-child(2),
+    &:first-child:nth-last-child(2) ~ & {
+      width: 50%;
+    }
+    
+    /* Three items */
+    &:first-child:nth-last-child(3),
+    &:first-child:nth-last-child(3) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3) {
+        width: 100%;
+      }
+    }
+    
+    /* Four items */
+    &:first-child:nth-last-child(4),
+    &:first-child:nth-last-child(4) ~ & {
+      width: 50%;
+    }
+    
+    /* Five items */
+    &:first-child:nth-last-child(5),
+    &:first-child:nth-last-child(5) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5) {
+        width: 33.3333%;
+      }
+    }
+    
+    /* Six items */
+    &:first-child:nth-last-child(6),
+    &:first-child:nth-last-child(6) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        width: 25%;
+      }
+    }
+    
+    /* Seven items */
+    &:first-child:nth-last-child(7),
+    &:first-child:nth-last-child(7) ~ & {
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        width: 50%;
+      }
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7) {
+        width: 33.3333%;
+      }
+    }
+    
+    /* Eight items */
+    &:first-child:nth-last-child(8),
+    &:first-child:nth-last-child(8) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8) {
+        width: 33.3333%;
+      }
+    }
+    
+    /* Nine items */
+    &:first-child:nth-last-child(9),
+    &:first-child:nth-last-child(9) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5) {
+        width: 33.3333%;
+      }
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9) {
+        width: 25%;
+      }
+    }
+    
+    /* Ten items */
+    &:first-child:nth-last-child(10),
+    &:first-child:nth-last-child(10) ~ & {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 50%;
+      }
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9),
+      &:nth-child(10) {
+        width: 25%;
+      }
+    }
 }
 
