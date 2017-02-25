@@ -5,6 +5,7 @@
 import 'angular';
 import 'angular-ui-router';
 import 'angular-sanitize';
+import 'angularjs-scroll-glue';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
@@ -15,22 +16,20 @@ import templatesModule from './_templates';
 var diplomat = angular.module('diplomat', [
   'ui.router',
   'ngSanitize',
+  'luegg.directives',
   templatesModule.name
 ]);
 
 diplomat.directive("cli",()=>{
 	return {
 		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
-			var gotoBottom = function() {
-				$location.hash('lastCommand');
-				$anchorScroll(); //TODO: fix!
-			};
 
 			$scope.outputLines = [
 				{output:"Welcome!"}
 			];
 
 			$scope.selectedOutput = 1;
+
 			$scope.addOutputLine = (line)=>{
 				$scope.selectedOutput = $scope.outputLines.length;
 				console.log(line);
@@ -39,16 +38,17 @@ diplomat.directive("cli",()=>{
 				$scope.outputLines.push({input:line});
 				$scope.selectedOutput = $scope.outputLines.length;
 				$scope.command = "";
-				$timeout(()=>{
-					gotoBottom();
-				});
 			}
 
 			$scope.decrementOutputSelection = ()=>{
 				if($scope.selectedOutput > 0) 
 					$scope.selectedOutput--;
 				$scope.command = $scope.outputLines[$scope.selectedOutput].input;
-				console.log($scope.outputLines)
+				
+				$location.hash("selectedOutput");
+				$timeout(() => {
+					$anchorScroll();
+				});
 			}
 			$scope.incrementOutputSelection = ()=>{
 				$scope.selectedOutput++;
@@ -56,14 +56,11 @@ diplomat.directive("cli",()=>{
 					$scope.selectedOutput = $scope.outputLines.length;
 				else
 					$scope.command = $scope.outputLines[$scope.selectedOutput].input;
+				$location.hash("selectedOutput");
+				$timeout(() => {
+					$anchorScroll();
+				});
 			}
-
-			// var getLastDoneCommandIndexBefore = (before)=>{
-			// 	for (var i = before-1; i >= 0; i--) {
-			// 		if(!$scope.outputLines[i].undone) return i;
-			// 	}
-			// 	return -1;
-			// };
 
 			$scope.undoLastCommand = ()=>{
 				$scope.outputLines.pop(); // remove undo box
@@ -74,12 +71,9 @@ diplomat.directive("cli",()=>{
 						$scope.outputLines[$scope.outputLines.length-1].undone.push(lastCommand);
 					else
 						$scope.outputLines[$scope.outputLines.length-1].undone = [lastCommand];
-					console.log($scope.outputLines);
 				}
 				
 			}
-
-			
 
 			$scope.focusInput = true;
 
@@ -99,11 +93,7 @@ diplomat.directive("cli",()=>{
                     		(content).replace(/\n/g, "<br />");
                 	}
 
-                	gotoBottom();
-
-                    $timeout(()=>{
-						gotoBottom();
-					});
+                    $timeout();
 
                 });
             });
@@ -144,7 +134,6 @@ diplomat.directive('onPressEnter', function () {
 diplomat.directive('onPressDown', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
-        	console.log("key pressed! "+ event.which);
             if(event.which === 40) {
             	console.log("down pressed!");
                 scope.$apply(function (){
@@ -160,9 +149,7 @@ diplomat.directive('onPressDown', function () {
 diplomat.directive('onPressUp', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
-
             if(event.which === 38) {
-				console.log("up pressed!");
 
                 scope.$apply(function (){
                     scope.$eval(attrs.onPressUp);
