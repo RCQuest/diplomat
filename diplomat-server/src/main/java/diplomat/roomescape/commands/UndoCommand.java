@@ -17,4 +17,9 @@ public class UndoCommand implements IGameCommand {
     public void Undo(Player player) {
         System.err.println("This should never happen!");
     }
+
+    @Override
+    public boolean WasSuccessful() {
+        return true;
+    }
 }

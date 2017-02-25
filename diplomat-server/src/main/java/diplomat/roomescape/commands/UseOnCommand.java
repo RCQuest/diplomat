@@ -11,6 +11,7 @@ import diplomat.roomescape.gameobjects.actors.Player;
 public class UseOnCommand implements IGameCommand {
     private IUsable object;
     private IUsableTarget target;
+    private boolean wasSuccessful;
 
     public UseOnCommand(IUsable object, IUsableTarget target) {
         this.object = object;
@@ -21,11 +22,16 @@ public class UseOnCommand implements IGameCommand {
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
         viewModel.ShowUseOnResult(object,target);
-        object.Use(target,player);
+        wasSuccessful = object.Use(target,player);
     }
 
     @Override
     public void Undo(Player player) {
         object.UnUse(target,player);
+    }
+
+    @Override
+    public boolean WasSuccessful() {
+        return wasSuccessful;
     }
 }

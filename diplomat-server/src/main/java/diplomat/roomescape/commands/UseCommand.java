@@ -9,6 +9,7 @@ import diplomat.roomescape.gameobjects.actors.Player;
  */
 public class UseCommand implements IGameCommand {
     private IStandaloneUsable object;
+    private boolean wasSuccessful;
 
     public UseCommand(IStandaloneUsable object) {
         this.object = object;
@@ -17,11 +18,16 @@ public class UseCommand implements IGameCommand {
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
         viewModel.ShowUseResult(object);
-        object.Use();
+        wasSuccessful = object.Use();
     }
 
     @Override
     public void Undo(Player player) {
         object.UnUse();
+    }
+
+    @Override
+    public boolean WasSuccessful() {
+        return wasSuccessful;
     }
 }

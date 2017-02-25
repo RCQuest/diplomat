@@ -16,12 +16,15 @@ public class Key extends AObtainable implements IExaminable, IUsable{
     }
 
     @Override
-    public void Use(IUsableTarget target, Player player) {
-        if(Door.class.isInstance(target)&&isObtained()&&((Door)target).IsLocked()){
+    public boolean Use(IUsableTarget target, Player player) {
+        boolean success =
+            Door.class.isInstance(target)&&isObtained()&&((Door)target).IsLocked();
+        if(success){
             Door door = (Door)target;
             door.Unlock();
             player.Discard(this);
         }
+        return success;
     }
 
     @Override
@@ -42,15 +45,10 @@ public class Key extends AObtainable implements IExaminable, IUsable{
     }
 
     @Override
-    public void UnUse(IUsableTarget target, Player player) {
-        if(Door.class.isInstance(target)){
-            if(!((Door)target).IsLocked()){
-                Door door = (Door)target;
-                door.Lock();
-            }
-            if(!isObtained())
-                player.Pickup(this);
-        }
+    public void UnUse(IUsableTarget target, Player player) { // assumes a successful use
+        Door door = (Door)target;
+        door.Lock();
+        player.Pickup(this);
     }
 
     @Override

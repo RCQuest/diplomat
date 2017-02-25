@@ -16,4 +16,9 @@ public class DoNothingCommand implements IGameCommand {
     public void Undo(Player player) {
 
     }
+
+    @Override
+    public boolean WasSuccessful() {
+        return false;
+    }
 }

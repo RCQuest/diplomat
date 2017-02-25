@@ -20,9 +20,11 @@ public class Inventory extends AGameObject implements IExaminable {
         this.obtainedObjects = new ArrayList<>();
     }
 
-    public void AddToInventory(AObtainable object) {
-        if(!object.isObtained()) this.obtainedObjects.add(object);
+    public boolean AddToInventory(AObtainable object) {
+        boolean alreadyHad = object.isObtained();
+        if(!alreadyHad) this.obtainedObjects.add(object);
         object.setObtained(true);
+        return !alreadyHad;
     }
 
     public void Discard(AObtainable obj) {

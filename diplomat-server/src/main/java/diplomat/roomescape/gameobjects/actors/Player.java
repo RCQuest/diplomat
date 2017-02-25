@@ -21,8 +21,8 @@ public class Player {
         this.commandHistory = new Stack<>();
     }
 
-    public void Pickup(AObtainable object) {
-        playerInventory.AddToInventory(object);
+    public boolean Pickup(AObtainable object) {
+        return playerInventory.AddToInventory(object);
     }
 
     public Room GetRoom() {
@@ -44,7 +44,8 @@ public class Player {
     public void UndoLastCommand() {
         if(!commandHistory.isEmpty()) {
             IGameCommand lastCommand = commandHistory.pop();
-            lastCommand.Undo(this);
+            if(lastCommand.WasSuccessful())
+                lastCommand.Undo(this);
         }
     }
 

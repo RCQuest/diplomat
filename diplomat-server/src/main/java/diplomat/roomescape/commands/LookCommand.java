@@ -23,4 +23,9 @@ public class LookCommand implements IGameCommand {
     public void Undo(Player player) {
 
     }
+
+    @Override
+    public boolean WasSuccessful() {
+        return true;
+    }
 }

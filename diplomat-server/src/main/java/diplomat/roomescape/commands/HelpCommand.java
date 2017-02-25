@@ -16,4 +16,9 @@ public class HelpCommand implements IGameCommand {
     public void Undo(Player player) {
 
     }
+
+    @Override
+    public boolean WasSuccessful() {
+        return true;
+    }
 }

@@ -7,4 +7,6 @@ public interface IGameCommand {
     void Execute(Player player, IRoomEscapeViewModel viewModel);
 
     void Undo(Player player);
+
+    boolean WasSuccessful();
 }

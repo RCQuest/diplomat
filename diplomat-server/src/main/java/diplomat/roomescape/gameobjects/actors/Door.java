@@ -1,8 +1,5 @@
 package diplomat.roomescape.gameobjects.actors;
 
-import diplomat.eventsystem.events.core.Event;
-import diplomat.eventsystem.events.core.EventSystem;
-import diplomat.eventsystem.events.core.IWithEvents;
 import diplomat.roomescape.gameobjects.*;
 
 /**
@@ -29,9 +26,10 @@ public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsable
     }
 
     @Override
-    public void Use() {
+    public boolean Use() {
         if(!locked)
             this.gameOverCallback.Invoke();
+        return !locked;
     }
 
     @Override
