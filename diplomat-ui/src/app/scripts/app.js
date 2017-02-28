@@ -11,6 +11,8 @@ import Stomp from 'stompjs';
 
 import config from './config';
 import templatesModule from './_templates';
+import * as StringSimiliarity from 'string-similarity';
+import * as _ from 'underscore';
 
 // define diplomat module
 var diplomat = angular.module('diplomat', [
@@ -29,6 +31,29 @@ diplomat.directive("cli",()=>{
 			];
 
 			$scope.selectedOutput = 1;
+
+			$scope.suggestions = [{
+				command: "help",
+				history: []
+			},
+			{
+				command: "look inventory",
+				history: ["pickup"]
+			},
+			{
+				command: "look",
+				history: ["use"]
+			}];
+
+			$scope.helpItems = [
+				"help - displays help",
+				"look - describes the room",
+				"look (object) - describes the object",
+				"use (object) on (target) - uses one item on another",
+				"pickup (object) - puts an object in your inventory",
+				"use (object) - uses an item",
+				"every (object) - searches and returns objects in the room"
+			];
 
 			$scope.addOutputLine = (line)=>{
 				$scope.selectedOutput = $scope.outputLines.length;
@@ -183,6 +208,67 @@ diplomat.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse)
         }
     };
 }]);
+
+diplomat.filter('help', function() {
+   return function(items, words) {
+   	if(words===""||!words) return [];
+
+   	var wordsList = words.split(" ");
+
+   	console.log(wordsList);
+
+    var filtered = [];
+
+    angular.forEach(items, function(item) {
+    	angular.forEach(wordsList, (word)=>{
+    		if(item.indexOf(word) !== -1){
+	            filtered.push(item);
+	        }
+    	});
+        
+    });
+
+    filtered = _.uniq(filtered);
+
+    // filtered.sort(function(a,b){
+    //     if(a.indexOf(words) < b.indexOf(words)) return -1;
+    //     else if(a.indexOf(words) > b.indexOf(words)) return 1;
+    //     else return 0;
+    // });
+
+    return filtered;
+  };
+});
+
+diplomat.filter('suggest', function() {
+	return function(items, command, history) {
+	   	if(command!==""||!history[history.length-1].input) return [];
+
+	    var suggestions = [];
+	    var sortedSuggestions = [];
+
+	    angular.forEach(items, function(item) {
+	        var sim = StringSimiliarity
+				.compareTwoStrings(
+					item.history.join(), 
+					history[history.length-1].input);
+			var command = item.command;
+			if(sim>0.1) suggestions.push({"command":command, "suitability":sim});
+	    });
+
+	    suggestions.sort(function(a,b){
+	        if(a.suitability < b.suitability) return 1;
+	        else if(a.suitability > b.suitability) return -1;
+	        else return 0;
+	    });
+
+	    angular.forEach(suggestions, (suggestion)=>{
+    		sortedSuggestions.push(suggestion.command);
+	    })
+
+	    return sortedSuggestions;
+    }
+});
 
 // configure diplomat
 diplomat.config(config);
