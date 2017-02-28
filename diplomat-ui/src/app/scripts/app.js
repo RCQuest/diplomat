@@ -34,15 +34,15 @@ diplomat.directive("cli",()=>{
 
 			$scope.suggestions = [{
 				command: "help",
-				history: []
+				history: ["invalid"]
 			},
 			{
 				command: "look inventory",
-				history: ["pickup"]
+				history: ["pickup","help"]
 			},
 			{
 				command: "look",
-				history: ["use"]
+				history: ["use","help"]
 			}];
 
 			$scope.helpItems = [
@@ -52,7 +52,8 @@ diplomat.directive("cli",()=>{
 				"use (object) on (target) - uses one item on another",
 				"pickup (object) - puts an object in your inventory",
 				"use (object) - uses an item",
-				"every (object) - searches and returns objects in the room"
+				"every (object) - searches objects in the room",
+				"undo - reverses the previous command"
 			];
 
 			$scope.addOutputLine = (line)=>{
@@ -215,13 +216,11 @@ diplomat.filter('help', function() {
 
    	var wordsList = words.split(" ");
 
-   	console.log(wordsList);
-
     var filtered = [];
 
     angular.forEach(items, function(item) {
     	angular.forEach(wordsList, (word)=>{
-    		if(item.indexOf(word) !== -1){
+    		if(item.indexOf(word) !== -1 && word.length > 1){
 	            filtered.push(item);
 	        }
     	});
@@ -242,16 +241,18 @@ diplomat.filter('help', function() {
 
 diplomat.filter('suggest', function() {
 	return function(items, command, history) {
-	   	if(command!==""||!history[history.length-1].input) return [];
-
-	    var suggestions = [];
+		var suggestions = [];
 	    var sortedSuggestions = [];
+	    var lastCommand = history[history.length-1];
+
+	   	if(command!==""||!lastCommand.input) 
+	   		return sortedSuggestions;
 
 	    angular.forEach(items, function(item) {
 	        var sim = StringSimiliarity
 				.compareTwoStrings(
 					item.history.join(), 
-					history[history.length-1].input);
+					lastCommand.input+" "+lastCommand.output);
 			var command = item.command;
 			if(sim>0.1) suggestions.push({"command":command, "suitability":sim});
 	    });
