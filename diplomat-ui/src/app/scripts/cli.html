@@ -1,7 +1,7 @@
 <script type="text/ng-template"  
 		id="undone_item.html">
     <div class="output-box" 
-		 ng-class="{ 'selected-output': $index==selectedOutput }">
+		 id="{{ $index==selectedOutput ? 'selected-output' : '' }}">
 		 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 		 	<span ng-bind-html="line.output | to_trusted"
 		 		  class="output-line">
@@ -15,11 +15,12 @@
 
 <div class="output-container">
 	<div id="output-area" 
-		 class="output-pushdown">
+		 class="output-pushdown"
+		 scroll-glue>
 		<div class="top-undo-group"
 			 ng-repeat="line in outputLines track by $index">
 			<div class="output-box" 
-				 ng-class="{ 'selected-output': $index==selectedOutput }">
+				 id="{{ $index==selectedOutput ? 'selected-output' : '' }}">
 				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 				 	<span ng-bind-html="line.output | to_trusted"
 				 		  class="output-line">
@@ -30,7 +31,6 @@
 				 class="sub-undo-group">
 			</div>
 		</div>
-		<div id="lastCommand"></div>
 	</div>
 </div>
 <div class="command-input-container">
@@ -42,4 +42,10 @@
 			   on-press-up="decrementOutputSelection()"
 			   on-press-down="incrementOutputSelection()"/>
 	</span>
+	<div ng-repeat="suggestion in suggestions | suggest:command:outputLines">
+		{{suggestion}}
+	</div>
+	<div ng-repeat="helpItem in helpItems | help:command">
+		{{helpItem}}
+	</div>
 </div>

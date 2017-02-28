@@ -16,11 +16,15 @@ System.config({
     "angular": "github:angular/bower-angular@1.4.6",
     "angular-sanitize": "npm:angular-sanitize@1.6.2",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "angularjs-scroll-glue": "npm:angularjs-scroll-glue@2.2.0",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "core-js": "npm:core-js@1.2.0",
+    "similarity-matrix": "npm:similarity-matrix@0.1.9",
     "sockjs-client": "npm:sockjs-client@1.1.1",
     "stompjs": "npm:stompjs@2.3.3",
+    "string-similarity": "npm:string-similarity@1.1.0",
+    "underscore": "npm:underscore@1.8.3",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.4.6"
     },
@@ -338,6 +342,10 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:similarity-matrix@0.1.9": {
+      "leven": "npm:leven@2.1.0",
+      "matrix-js": "npm:matrix-js@1.2.1"
+    },
     "npm:sockjs-client@1.1.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "debug": "npm:debug@2.2.0",
@@ -358,6 +366,9 @@ System.config({
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
       "readable-stream": "npm:readable-stream@1.1.14"
+    },
+    "npm:string-similarity@1.1.0": {
+      "lodash": "npm:lodash@4.17.4"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
