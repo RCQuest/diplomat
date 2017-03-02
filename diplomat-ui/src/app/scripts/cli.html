@@ -1,7 +1,7 @@
 <script type="text/ng-template"  
 		id="undone_item.html">
     <div class="output-box" 
-		 id="{{ $index==selectedOutput ? 'selected-output' : '' }}">
+		 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
 		 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 		 	<span ng-bind-html="line.output | to_trusted"
 		 		  class="output-line">
@@ -20,7 +20,7 @@
 		<div class="top-undo-group"
 			 ng-repeat="line in outputLines track by $index">
 			<div class="output-box" 
-				 id="{{ $index==selectedOutput ? 'selected-output' : '' }}">
+				 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
 				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 				 	<span ng-bind-html="line.output | to_trusted"
 				 		  class="output-line">

@@ -27,10 +27,13 @@ diplomat.directive("cli",()=>{
 		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
 
 			$scope.outputLines = [
-				{output:"Welcome!"}
+				{
+					output:"Welcome! Type 'help' for more.",
+					id:0
+				}
 			];
-
-			$scope.selectedOutput = 1;
+			$scope.nextOutputId = 1;
+			$scope.selectedOutput = 2;
 
 			$scope.suggestions = [{
 				command: "help",
@@ -61,35 +64,43 @@ diplomat.directive("cli",()=>{
 				console.log(line);
 				if(!line) return;
 				sendCommand(line);
-				$scope.outputLines.push({input:line});
-				$scope.selectedOutput = $scope.outputLines.length;
+				$scope.outputLines.push({input:line,id:$scope.nextOutputId});
+				$scope.nextOutputId++;
+				$scope.selectedOutput = $scope.nextOutputId;
 				$scope.command = "";
 			}
 
 			$scope.decrementOutputSelection = ()=>{
 				if($scope.selectedOutput > 0) 
 					$scope.selectedOutput--;
-				$scope.command = $scope.outputLines[$scope.selectedOutput].input;
+				$scope.command = $scope.findOutputWithId($scope.selectedOutput,$scope.outputLines).input;
 				
-				$location.hash("selectedOutput");
-				$timeout(() => {
-					$anchorScroll();
-				});
 			}
+
+			$scope.findOutputWithId = (id,outputLines)=>{
+				for (var i = outputLines.length - 1; i >= 0; i--) {
+					if(outputLines[i].id == id) return outputLines[i];
+					if(Array.isArray(outputLines[i].undone)){
+						var recRes = $scope.findOutputWithId(id,outputLines[i].undone);
+						if(recRes.input!="")
+							return recRes;
+					}
+				}
+				return {input:""};
+			}
+
 			$scope.incrementOutputSelection = ()=>{
 				$scope.selectedOutput++;
-				if($scope.selectedOutput >= $scope.outputLines.length) 
-					$scope.selectedOutput = $scope.outputLines.length;
+				if($scope.selectedOutput >= $scope.nextOutputId) 
+					$scope.selectedOutput = $scope.nextOutputId;
 				else
-					$scope.command = $scope.outputLines[$scope.selectedOutput].input;
-				$location.hash("selectedOutput");
-				$timeout(() => {
-					$anchorScroll();
-				});
+					$scope.command = $scope.findOutputWithId($scope.selectedOutput,$scope.outputLines).input;				
 			}
 
 			$scope.undoLastCommand = ()=>{
 				$scope.outputLines.pop(); // remove undo box
+				$scope.nextOutputId --;
+				$scope.selectedOutput = $scope.nextOutputId;
 				if($scope.outputLines.length>1){
 					var lastCommand = $scope.outputLines.pop();
 					var context = $scope.outputLines[$scope.outputLines.length-1];
