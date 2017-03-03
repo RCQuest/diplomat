@@ -47,6 +47,7 @@ diplomat.directive("cli",()=>{
 				command: "look",
 				history: ["use","help"]
 			}];
+			$scope.numberOfFilteredSuggestions = 0;
 
 			$scope.helpItems = [
 				"help - displays help",
@@ -91,8 +92,9 @@ diplomat.directive("cli",()=>{
 
 			$scope.incrementOutputSelection = ()=>{
 				$scope.selectedOutput++;
-				if($scope.selectedOutput >= $scope.nextOutputId) 
-					$scope.selectedOutput = $scope.nextOutputId;
+				var total = $scope.nextOutputId+$scope.numberOfFilteredSuggestions
+				if($scope.selectedOutput >= total) 
+					$scope.selectedOutput = total;
 				else
 					$scope.command = $scope.findOutputWithId($scope.selectedOutput,$scope.outputLines).input;				
 			}
@@ -110,6 +112,10 @@ diplomat.directive("cli",()=>{
 						$scope.outputLines[$scope.outputLines.length-1].undone = [lastCommand];
 				}
 				
+			}
+
+			$scope.setNumberOfFilteredSuggestions = (num) =>{
+				$scope.numberOfFilteredSuggestions = num;
 			}
 
 			$scope.focusInput = true;
@@ -251,7 +257,7 @@ diplomat.filter('help', function() {
 });
 
 diplomat.filter('suggest', function() {
-	return function(items, command, history) {
+	return function(items, command, history, setNum) {
 		var suggestions = [];
 	    var sortedSuggestions = [];
 	    var lastCommand = history[history.length-1];
@@ -276,7 +282,9 @@ diplomat.filter('suggest', function() {
 
 	    angular.forEach(suggestions, (suggestion)=>{
     		sortedSuggestions.push(suggestion.command);
-	    })
+	    });
+
+	    setNum(sortedSuggestions.length);
 
 	    return sortedSuggestions;
     }

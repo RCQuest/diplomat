@@ -1,6 +1,7 @@
 <script type="text/ng-template"  
 		id="undone_item.html">
     <div class="output-box" 
+    	 ng-class="{ 'error' : line.output=='Invalid command.' }"
 		 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
 		 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 		 	<span ng-bind-html="line.output | to_trusted"
@@ -20,6 +21,7 @@
 		<div class="top-undo-group"
 			 ng-repeat="line in outputLines track by $index">
 			<div class="output-box" 
+    	 		 ng-class="{ 'error' : line.output=='Invalid command.' }"
 				 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
 				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 				 	<span ng-bind-html="line.output | to_trusted"
@@ -42,7 +44,8 @@
 			   on-press-up="decrementOutputSelection()"
 			   on-press-down="incrementOutputSelection()"/>
 	</span>
-	<div ng-repeat="suggestion in suggestions | suggest:command:outputLines">
+	<div ng-repeat="suggestion in suggestions | suggest:command:outputLines:setNumberOfFilteredSuggestions track by $index"
+		 id="{{ $index+1+nextOutputId==selectedOutput ? 'selected-output' : '' }}">
 		{{suggestion}}
 	</div>
 	<div ng-repeat="helpItem in helpItems | help:command">

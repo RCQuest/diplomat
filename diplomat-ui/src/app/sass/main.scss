@@ -36,6 +36,12 @@
 	word-wrap: break-word;
 	min-width:100px;
 }
+.error.output-box {
+	border-color: crimson;
+}
+.error > .input-line {
+	background:crimson;
+}
 
 .input-line{
 	box-sizing: border-box;
