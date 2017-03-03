@@ -34,6 +34,7 @@ diplomat.directive("cli",()=>{
 			];
 			$scope.nextOutputId = 1;
 			$scope.selectedOutput = 2;
+			$scope.scrollMode = false;
 
 			$scope.suggestions = [{
 				command: "help",
@@ -47,7 +48,7 @@ diplomat.directive("cli",()=>{
 				command: "look",
 				history: ["use","help"]
 			}];
-			$scope.numberOfFilteredSuggestions = 0;
+			$scope.FilteredSuggestions = [];
 
 			$scope.helpItems = [
 				"help - displays help",
@@ -59,6 +60,9 @@ diplomat.directive("cli",()=>{
 				"every (object) - searches objects in the room",
 				"undo - reverses the previous command"
 			];
+			$scope.scrollModeToggle = (toggle)=>{
+				$scope.scrollMode = toggle;
+			}
 
 			$scope.addOutputLine = (line)=>{
 				$scope.selectedOutput = $scope.outputLines.length;
@@ -74,8 +78,29 @@ diplomat.directive("cli",()=>{
 			$scope.decrementOutputSelection = ()=>{
 				if($scope.selectedOutput > 0) 
 					$scope.selectedOutput--;
-				$scope.command = $scope.findOutputWithId($scope.selectedOutput,$scope.outputLines).input;
+				$scope.command = $scope.findSelectionWithId($scope.selectedOutput,$scope.outputLines);
 				
+			}
+
+			$scope.findSelectionWithId = (id,output) =>{
+				console.log($scope.FilteredSuggestions);
+				console.log(id);
+				var o = $scope.findOutputWithId(id,output).input;
+				if(o===""){
+					return $scope.findSuggestionWithId(id);
+				} else {
+					return o;
+				}
+			}
+
+			$scope.findSuggestionWithId = (id) =>{
+				id -= $scope.nextOutputId;
+				id -= 1;
+				console.log(id);
+				if(id<0||id<$scope.FilteredSuggestions.length)
+					return $scope.FilteredSuggestions[id];
+				else 
+					return "";
 			}
 
 			$scope.findOutputWithId = (id,outputLines)=>{
@@ -92,11 +117,11 @@ diplomat.directive("cli",()=>{
 
 			$scope.incrementOutputSelection = ()=>{
 				$scope.selectedOutput++;
-				var total = $scope.nextOutputId+$scope.numberOfFilteredSuggestions
+				var total = $scope.nextOutputId+$scope.FilteredSuggestions.length+1;
 				if($scope.selectedOutput >= total) 
 					$scope.selectedOutput = total;
 				else
-					$scope.command = $scope.findOutputWithId($scope.selectedOutput,$scope.outputLines).input;				
+					$scope.command = $scope.findSelectionWithId($scope.selectedOutput,$scope.outputLines);				
 			}
 
 			$scope.undoLastCommand = ()=>{
@@ -114,8 +139,8 @@ diplomat.directive("cli",()=>{
 				
 			}
 
-			$scope.setNumberOfFilteredSuggestions = (num) =>{
-				$scope.numberOfFilteredSuggestions = num;
+			$scope.setFilteredSuggestions = (num) =>{
+				$scope.FilteredSuggestions = num;
 			}
 
 			$scope.focusInput = true;
@@ -204,6 +229,23 @@ diplomat.directive('onPressUp', function () {
     };
 });
 
+diplomat.directive('scrollModeToggler', function () {
+    return function (scope, element, attrs) {
+    	scope.FilteredSuggestions
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 38 || event.which == 40) {
+                scope.$apply(function (){
+                    scope.scrollModeToggle(true);
+                });
+            } else {
+            	scope.$apply(function (){
+                    scope.scrollModeToggle(false);
+                });
+            }
+        });
+    };
+});
+
 diplomat.filter('to_trusted', ['$sce', function($sce){
     return function(text) {
         return $sce.trustAsHtml(text);
@@ -284,7 +326,7 @@ diplomat.filter('suggest', function() {
     		sortedSuggestions.push(suggestion.command);
 	    });
 
-	    setNum(sortedSuggestions.length);
+	    setNum(sortedSuggestions);
 
 	    return sortedSuggestions;
     }

@@ -42,13 +42,19 @@
 			   on-press-enter="addOutputLine(command)"
 			   focus-me="focusInput"
 			   on-press-up="decrementOutputSelection()"
-			   on-press-down="incrementOutputSelection()"/>
+			   on-press-down="incrementOutputSelection()"
+			   scroll-mode-toggler/>
 	</span>
-	<div ng-repeat="suggestion in suggestions | suggest:command:outputLines:setNumberOfFilteredSuggestions track by $index"
+	<div ng-if="scrollMode"
+		 ng-repeat="suggestion in FilteredSuggestions"
 		 id="{{ $index+1+nextOutputId==selectedOutput ? 'selected-output' : '' }}">
+		 {{suggestion}}
+	</div>
+	<div ng-repeat="suggestion in suggestions | suggest:command:outputLines:setFilteredSuggestions track by $index">
 		{{suggestion}}
 	</div>
-	<div ng-repeat="helpItem in helpItems | help:command">
+	<div ng-if="!scrollMode" 
+		 ng-repeat="helpItem in helpItems | help:command">
 		{{helpItem}}
 	</div>
 </div>
