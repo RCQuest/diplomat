@@ -3,6 +3,7 @@ package diplomat.roomescape.cli.commands;
 import diplomat.roomescape.cli.commands.token.*;
 import diplomat.roomescape.commands.DoNothingCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
+import diplomat.roomescape.gameobjects.ObjectGroup;
 import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.commands.IGameCommand;
 
@@ -37,16 +38,28 @@ public class CLICommandFactory {
         ACommandTokenStrategy strategySequence;
 
         try {
+            boolean nextWillBeEvery = false;
+
             if(isCommandToken(firstToken))
                 strategySequence = commandTokenStrategies.get(firstToken).newInstance();
             else
                 throw new InvalidCommandException();
+
             for (int i = 1; i < commandTokens.length; i++) {
                 String commandToken = commandTokens[i];
-                if(isCommandToken(commandToken)) {
+                if(isEvery(commandToken)) {
+                    nextWillBeEvery = true;
+                } else if(isCommandToken(commandToken)) {
                     strategySequence.AssignAsProperty(commandTokenStrategies.get(commandToken).newInstance());
+                    nextWillBeEvery = false;
                 } else {
-                    strategySequence.AssignAsProperty(new GameObjectTokenStrategy(getGameObject(commandToken)));
+                    if(nextWillBeEvery){
+                        strategySequence.AssignAsProperty(new GameObjectTokenStrategy(getAllGameObjects(commandToken)));
+                    } else {
+                        strategySequence.AssignAsProperty(new GameObjectTokenStrategy(getGameObject(commandToken)));
+                    }
+
+                    nextWillBeEvery = false;
                 }
             }
         } catch (InstantiationException | IllegalAccessException e) {
@@ -55,6 +68,20 @@ public class CLICommandFactory {
         }
 
         return strategySequence.collapseToCommand();
+    }
+
+    private AGameObject getAllGameObjects(String gameObjectName) {
+        System.out.println("getting all...");
+        ArrayList<AGameObject> objects = new ArrayList<>();
+        objects.addAll(this.inventoryObjects);
+        objects.addAll(this.roomObjects);
+        return new ObjectGroup(objects.stream()
+                .filter(x -> x.GetName().matches("(.*)"+gameObjectName+"(.*)"))
+                .toArray(AGameObject[]::new));
+    }
+
+    private boolean isEvery(String commandToken) {
+        return commandToken.equals("every");
     }
 
     private String[] tokenize(String commandString){
