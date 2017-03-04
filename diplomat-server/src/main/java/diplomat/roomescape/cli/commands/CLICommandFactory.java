@@ -71,12 +71,15 @@ public class CLICommandFactory {
     }
 
     private AGameObject getAllGameObjects(String gameObjectName) {
-        System.out.println("getting all...");
         ArrayList<AGameObject> objects = new ArrayList<>();
         objects.addAll(this.inventoryObjects);
+        System.out.println(this.inventoryObjects);
         objects.addAll(this.roomObjects);
+        System.out.println(this.roomObjects);
+        System.out.println("getting all...");
         return new ObjectGroup(objects.stream()
                 .filter(x -> x.GetName().matches("(.*)"+gameObjectName+"(.*)"))
+                .distinct()
                 .toArray(AGameObject[]::new));
     }
 

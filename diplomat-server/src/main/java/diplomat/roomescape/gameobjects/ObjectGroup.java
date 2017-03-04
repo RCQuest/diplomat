@@ -1,23 +1,23 @@
 package diplomat.roomescape.gameobjects;
 
+import diplomat.roomescape.IRoomEscapeViewModel;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * Created by rachelcabot on 04/03/2017.
  */
-public class ObjectGroup extends AGameObject implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget {
+public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget {
     private final AGameObject[] objects;
 
     public ObjectGroup(AGameObject[] objects) {
         super("group");
         System.out.println(Arrays.toString(objects));
         this.objects = objects;
-        System.out.println("created object group");
+//        System.out.println("created object group");
     }
 
     @Override
@@ -33,31 +33,85 @@ public class ObjectGroup extends AGameObject implements IExaminable,IStandaloneU
 
     @Override
     public boolean Use() {
-        return false;
+        ArrayList<IStandaloneUsable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IStandaloneUsable)object);
+        }
+        return o.stream()
+                .map(IStandaloneUsable::Use)
+                .reduce(true, (a, b) -> a && b);
     }
 
     @Override
     public String GetUsageDescription() {
-        return null;
+        ArrayList<IStandaloneUsable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IStandaloneUsable)object);
+        }
+        return o.stream()
+                .map(IStandaloneUsable::GetUsageDescription)
+                .collect(Collectors.joining("\n"));
     }
 
     @Override
     public void UnUse() {
-
+        for (AGameObject object : objects) {
+            ((IStandaloneUsable)object).UnUse();
+        }
     }
 
     @Override
     public boolean Use(IUsableTarget target, Player player) {
-        return false;
+        ArrayList<IUsable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IUsable)object);
+        }
+        return o.stream()
+                .map(u -> u.Use(target,player))
+                .reduce(true, (a, b) -> a && b);
     }
 
     @Override
     public String GetUsageDescription(IUsableTarget target) {
-        return null;
+        ArrayList<IUsable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IUsable)object);
+        }
+        return o.stream()
+                .map(u -> u.GetUsageDescription(target))
+                .collect(Collectors.joining("\n"));
     }
 
     @Override
     public void UnUse(IUsableTarget target, Player player) {
+        for (AGameObject object : objects) {
+            ((IUsable)object).UnUse(target, player);
+        }
+    }
 
+    @Override
+    public String GetObtainedDescription() {
+        ArrayList<AObtainable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((AObtainable)object);
+        }
+        return o.stream()
+                .map(AObtainable::GetObtainedDescription)
+                .collect(Collectors.joining("\n"));
+    }
+
+    public boolean PerformGroupPickup(Player player, IRoomEscapeViewModel viewModel) {
+        boolean didNotHaveItemWhenPerformed = true;
+        for (AGameObject object : objects) {
+            viewModel.ShowPickupResult((AObtainable)object, player);
+            didNotHaveItemWhenPerformed = didNotHaveItemWhenPerformed && player.Pickup((AObtainable)object);
+        }
+        return didNotHaveItemWhenPerformed;
+    }
+
+    public void PerformGroupPutDown(Player player) {
+        for (AGameObject object : objects) {
+            player.PutDown((AObtainable) object);
+        }
     }
 }
