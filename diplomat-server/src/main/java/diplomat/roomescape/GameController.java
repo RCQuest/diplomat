@@ -13,14 +13,18 @@ public class GameController {
 
     private IRoomEscapeViewModel viewModel;
     private Player player;
+    private RoomFactory roomFactory;
 
     public GameController(IRoomEscapeViewModel viewModel) {
         this.viewModel = viewModel;
-        RoomFactory roomFactory = new RoomFactory();
+        this.roomFactory = new RoomFactory();
 
-        Room room = roomFactory.CreateRoom("/keydoor.room");
+        ResetGame("/keydoor.room");
+    }
+
+    private void ResetGame(String roomPath) {
+        Room room = roomFactory.CreateRoom(roomPath);
         this.player = new Player(room);
-
         viewModel.SetPlayer(this.player);
         room.AddObject(this.player.GetInventory());
         SubscribeToGameOverCallbacks();
@@ -29,7 +33,7 @@ public class GameController {
     private void SubscribeToGameOverCallbacks() {
         player.GetRoom().GetAllRoomObjects().stream().forEach(object->{
             if(AGameOverInvoker.class.isInstance(object))
-                ((AGameOverInvoker)object).SetGameOverCallback(() -> OnGameOver());
+                ((AGameOverInvoker)object).SetGameOverCallback(this::OnGameOver);
         });
     }
 
@@ -48,7 +52,8 @@ public class GameController {
         return player.GetInventoryObjects();
     }
 
-    public void OnGameOver() {
+    private void OnGameOver() {
         viewModel.ShowGameComplete();
+        ResetGame("/justdoor.room");
     }
 }
