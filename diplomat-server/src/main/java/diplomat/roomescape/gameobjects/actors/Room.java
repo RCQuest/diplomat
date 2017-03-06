@@ -18,8 +18,34 @@ public class Room extends AGameObject implements IExaminable {
 
     @Override
     public String Describe() {
-        return "It's a room. The following objects reside in the room: "
-                +GetListOfDescribableObjects().toString();
+        String d = "You're in a room. There's ";
+        d=d+GetDescribedList(GetListOfDescribableObjects());
+
+        return d;
+    }
+
+    private String GetDescribedList(ArrayList<AGameObject> gameObjects) {
+        String s ="";
+        String vowels ="aeiou";
+        for (int i = 0; i < gameObjects.size(); i++) {
+            AGameObject go = gameObjects.get(i);
+            String n = go.GetName();
+            String connector = "";
+            if(i==gameObjects.size()-1)
+                connector="and ";
+            if (vowels.indexOf(Character.toLowerCase(n.charAt(0))) != -1)
+                connector = connector+ "an ";
+            else
+                connector =connector+ "a ";
+            s = s + connector + n;
+            if(i==gameObjects.size()-1)
+                s = s + ".";
+            else
+                s=s+", ";
+        }
+
+        return s;
+
     }
 
     public ArrayList<AGameObject> GetListOfDescribableObjects(){
