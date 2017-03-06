@@ -6,7 +6,13 @@ import diplomat.roomescape.gameobjects.*;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 public class CLIViewModel implements IRoomEscapeViewModel {
-    private static String helpText = "Possible commands:\n look _\n use _\n use _ on _\n pickup _\n help";
+    private static String helpText = "Possible commands:\n " +
+            "look _\n " +
+            "use _\n " +
+            "use _ on _\n " +
+            "pickup _ \n " +
+            "every _\n " +
+            "help";
     private static String undoneText = "undone";
     private CommandController cli;
     private Player player;

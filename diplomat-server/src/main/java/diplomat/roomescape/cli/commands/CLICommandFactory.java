@@ -29,6 +29,9 @@ public class CLICommandFactory {
 
 
     public IGameCommand CreateCommand(String commandString) throws InvalidCommandException {
+        if(commandString.equals("look")){
+            commandString = "look room";
+        }
         String[] commandTokens = tokenize(commandString);
 
         if(!areValidTokens(commandTokens)) throw new InvalidCommandException();
