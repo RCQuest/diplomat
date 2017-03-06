@@ -17,6 +17,15 @@ export default /* @ngInject */ ($stateProvider, $urlRouterProvider) => {
           }
         }
       }
+    }).state('reduced', {
+      url  : '/red',
+      views: {
+        content: {
+          templateUrl: 'scripts/reduced-view.html',
+          controller : /* @ngInject */ ($scope) => {
+          }
+        }
+      }
     });
 
 };

@@ -180,6 +180,166 @@ diplomat.directive("cli",()=>{
 		templateUrl: "scripts/cli.html"
 	}
 });
+diplomat.directive("cliReduced",()=>{
+	return {
+		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
+
+			$scope.outputLines = [
+				{
+					output:"Welcome! Type 'help' for more.",
+					id:0
+				}
+			];
+			$scope.nextOutputId = 1;
+			$scope.selectedOutput = 2;
+			$scope.scrollMode = false;
+
+			$scope.suggestions = [{
+				command: "help",
+				history: ["invalid"]
+			},
+			{
+				command: "look inventory",
+				history: ["pickup","help"]
+			},
+			{
+				command: "look",
+				history: ["use","help"]
+			}];
+			$scope.FilteredSuggestions = [];
+
+			$scope.helpItems = [
+				"help - displays help",
+				"look - describes the room",
+				"look (object) - describes the object",
+				"use (object) on (target) - uses one item on another",
+				"pickup (object) - puts an object in your inventory",
+				"use (object) - uses an item",
+				"every (object) - searches objects in the room",
+				"undo - reverses the previous command"
+			];
+			$scope.scrollModeToggle = (toggle)=>{
+				$scope.scrollMode = toggle;
+			}
+
+			$scope.addOutputLine = (line)=>{
+				$scope.selectedOutput = $scope.outputLines.length;
+				console.log(line);
+				if(!line) return;
+				sendCommand(line);
+				$scope.outputLines.push({input:line,id:$scope.nextOutputId});
+				$scope.nextOutputId++;
+				$scope.selectedOutput = $scope.nextOutputId;
+				$scope.command = "";
+			}
+
+			$scope.decrementOutputSelection = ()=>{
+				if($scope.selectedOutput > 0) 
+					$scope.selectedOutput--;
+				$scope.command = $scope.findSelectionWithId($scope.selectedOutput,$scope.outputLines);
+				
+			}
+
+			$scope.findSelectionWithId = (id,output) =>{
+				console.log($scope.FilteredSuggestions);
+				console.log(id);
+				var o = $scope.findOutputWithId(id,output).input;
+				if(o===""){
+					return $scope.findSuggestionWithId(id);
+				} else {
+					return o;
+				}
+			}
+
+			$scope.findSuggestionWithId = (id) =>{
+				id -= $scope.nextOutputId;
+				id -= 1;
+				console.log(id);
+				if(id<0||id<$scope.FilteredSuggestions.length)
+					return $scope.FilteredSuggestions[id];
+				else 
+					return "";
+			}
+
+			$scope.findOutputWithId = (id,outputLines)=>{
+				for (var i = outputLines.length - 1; i >= 0; i--) {
+					if(outputLines[i].id == id) return outputLines[i];
+					if(Array.isArray(outputLines[i].undone)){
+						var recRes = $scope.findOutputWithId(id,outputLines[i].undone);
+						if(recRes.input!="")
+							return recRes;
+					}
+				}
+				return {input:""};
+			}
+
+			$scope.incrementOutputSelection = ()=>{
+				$scope.selectedOutput++;
+				var total = $scope.nextOutputId+$scope.FilteredSuggestions.length+1;
+				if($scope.selectedOutput >= total) 
+					$scope.selectedOutput = total;
+				else
+					$scope.command = $scope.findSelectionWithId($scope.selectedOutput,$scope.outputLines);				
+			}
+
+			$scope.undoLastCommand = ()=>{
+				$scope.outputLines.pop(); // remove undo box
+				$scope.nextOutputId --;
+				$scope.selectedOutput = $scope.nextOutputId;
+				if($scope.outputLines.length>1){
+					var lastCommand = $scope.outputLines.pop();
+					var context = $scope.outputLines[$scope.outputLines.length-1];
+					if(Array.isArray(context.undone))
+						$scope.outputLines[$scope.outputLines.length-1].undone.push(lastCommand);
+					else
+						$scope.outputLines[$scope.outputLines.length-1].undone = [lastCommand];
+				}
+				
+			}
+
+			$scope.setFilteredSuggestions = (num) =>{
+				$scope.FilteredSuggestions = num;
+			}
+
+			$scope.focusInput = true;
+
+			var socket = new SockJS('http://localhost:8080/command');
+			
+
+			var stompClient = Stomp.over(socket);
+			stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/response', function(greeting){
+                	var content = JSON.parse(greeting.body).content
+                    console.log(content);
+                	if(content==="undone"){
+            			$scope.undoLastCommand();
+                	} else {
+                		$scope.outputLines[$scope.outputLines.length-1].output =
+                    		(content).replace(/\n/g, "<br />");
+                	}
+
+                    $timeout();
+
+                });
+            });
+
+            var sendCommand = function(command){
+            	console.log('tryina senddd '+command);
+            	stompClient.send(
+            		"/diplomat/command",
+            		{},
+            		JSON.stringify({
+            			"commandString":command
+            		}));
+            	
+            };
+		},
+		templateUrl: "scripts/cli-reduced.html"
+	}
+});
+
+
 diplomat.directive('onPressEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {

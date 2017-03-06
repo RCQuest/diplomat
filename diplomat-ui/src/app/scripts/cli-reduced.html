@@ -1,0 +1,32 @@
+<div class="output-container">
+	<div id="output-area" 
+		 class="output-pushdown"
+		 scroll-glue>
+		<div class="top-undo-group"
+			 ng-repeat="line in outputLines track by $index">
+			<div class="output-box" 
+    	 		 ng-class="{ 'error' : line.output=='Invalid command.' }"
+				 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
+				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
+				 	<span ng-bind-html="line.output | to_trusted"
+				 		  class="output-line">
+			 		</span>
+			</div>
+			<div ng-repeat="line in line.undone track by $index"
+				 ng-include="'undone_item.html'"
+				 class="sub-undo-group">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="command-input-container">
+	<span class="cursor">> </span>
+	<span class="command-input">
+		<input ng-model="command" 
+			   on-press-enter="addOutputLine(command)"
+			   focus-me="focusInput"
+			   on-press-up="decrementOutputSelection()"
+			   on-press-down="incrementOutputSelection()"
+			   scroll-mode-toggler/>
+	</span>
+</div>
