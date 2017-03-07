@@ -6,6 +6,7 @@ import 'angular';
 import 'angular-ui-router';
 import 'angular-sanitize';
 import 'angularjs-scroll-glue';
+import 'angular-cookies';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
@@ -19,6 +20,7 @@ var diplomat = angular.module('diplomat', [
   'ui.router',
   'ngSanitize',
   'luegg.directives',
+  'ngCookies',
   templatesModule.name
 ]);
 
@@ -406,6 +408,27 @@ diplomat.directive('scrollModeToggler', function () {
     };
 });
 
+diplomat.directive('analyticsMonitor', ["$cookies",function($cookies){
+    return {
+        link: function (scope, element, attrs) {
+        	element.bind("keydown", function (event) {
+    			var ts = Date.now();
+        		var sessionData = $cookies.getObject("sessionData");
+        		if(sessionData){
+        			sessionData[ts]=event.which;
+        		} else {
+        			sessionData = {};
+        			sessionData[ts] = event.which;
+        		}
+        		$cookies.putObject("sessionData",sessionData);
+        		console.log($cookies.getObject("sessionData"));
+
+            	
+        	});
+        }
+    };
+}]);
+
 diplomat.filter('to_trusted', ['$sce', function($sce){
     return function(text) {
         return $sce.trustAsHtml(text);
@@ -428,6 +451,16 @@ diplomat.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse)
         }
     };
 }]);
+
+// diplomat.directive('taskMonitor', function(){
+// 	return {
+// 		link: function(scope,el,attrs){
+// 			element.bind("keydown", function (event) {
+				
+// 			}
+// 		}
+// 	}
+// });
 
 diplomat.filter('help', function() {
    return function(items, words) {

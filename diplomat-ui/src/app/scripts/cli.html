@@ -43,7 +43,8 @@
 			   focus-me="focusInput"
 			   on-press-up="decrementOutputSelection()"
 			   on-press-down="incrementOutputSelection()"
-			   scroll-mode-toggler/>
+			   scroll-mode-toggler
+			   analytics-monitor/>
 	</span>
 	<div ng-if="scrollMode"
 		 ng-repeat="suggestion in FilteredSuggestions"
