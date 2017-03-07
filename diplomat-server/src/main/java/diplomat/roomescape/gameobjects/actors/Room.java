@@ -31,7 +31,7 @@ public class Room extends AGameObject implements IExaminable {
             AGameObject go = gameObjects.get(i);
             String n = go.GetName();
             String connector = "";
-            if(i==gameObjects.size()-1)
+            if(i==gameObjects.size()-1&&gameObjects.size()>1)
                 connector="and ";
             if (vowels.indexOf(Character.toLowerCase(n.charAt(0))) != -1)
                 connector = connector+ "an ";
