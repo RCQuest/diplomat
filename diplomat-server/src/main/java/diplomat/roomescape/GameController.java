@@ -22,12 +22,16 @@ public class GameController {
         ResetGame("/keydoor.room");
     }
 
-    private void ResetGame(String roomPath) {
+    public void ResetGame(String roomPath) {
         Room room = roomFactory.CreateRoom(roomPath);
-        this.player = new Player(room);
+        this.player = new Player(room,this::NextRoom);
         viewModel.SetPlayer(this.player);
         room.AddObject(this.player.GetInventory());
         SubscribeToGameOverCallbacks();
+    }
+
+    public void NextRoom(){
+        ResetGame("/justdoor.room");
     }
 
     private void SubscribeToGameOverCallbacks() {
@@ -54,6 +58,5 @@ public class GameController {
 
     private void OnGameOver() {
         viewModel.ShowGameComplete();
-        ResetGame("/justdoor.room");
     }
 }

@@ -1,5 +1,6 @@
 package diplomat.roomescape.gameobjects.actors;
 
+import diplomat.roomescape.Callback;
 import diplomat.roomescape.commands.IGameCommand;
 import diplomat.roomescape.gameobjects.AGameObject;
 import diplomat.roomescape.gameobjects.AObtainable;
@@ -12,11 +13,13 @@ import java.util.Stack;
  */
 public class Player {
     private Room currentRoom;
+    private Callback nextRoomCallback;
     private Inventory playerInventory;
     private Stack<IGameCommand> commandHistory;
 
-    public Player(Room initialRoom){
+    public Player(Room initialRoom, Callback nextRoomCallback){
         this.currentRoom = initialRoom;
+        this.nextRoomCallback = nextRoomCallback;
         this.playerInventory = new Inventory();
         this.commandHistory = new Stack<>();
     }
@@ -55,5 +58,9 @@ public class Player {
 
     public void Store(IGameCommand command) {
         commandHistory.push(command);
+    }
+
+    public void NextRoom() {
+        nextRoomCallback.Invoke();
     }
 }

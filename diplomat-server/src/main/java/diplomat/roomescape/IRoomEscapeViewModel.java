@@ -20,4 +20,6 @@ public interface IRoomEscapeViewModel {
     void ShowHelp();
 
     void ShowUndoResult();
+
+    void ShowRestartCode();
 }

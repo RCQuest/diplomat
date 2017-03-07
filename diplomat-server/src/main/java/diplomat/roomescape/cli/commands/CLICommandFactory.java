@@ -23,6 +23,7 @@ public class CLICommandFactory {
         put("every",EveryTokenStrategy.class);
         put("help", HelpTokenStrategy.class);
         put("undo", UndoTokenStrategy.class);
+        put("start", StartTokenStrategy.class);
     }};
     private ArrayList<AGameObject> roomObjects;
     private ArrayList<AGameObject> inventoryObjects;

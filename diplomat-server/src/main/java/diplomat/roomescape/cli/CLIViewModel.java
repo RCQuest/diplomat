@@ -14,6 +14,7 @@ public class CLIViewModel implements IRoomEscapeViewModel {
             "every _\n " +
             "help";
     private static String undoneText = "undone";
+    private static String startCode = "restarting";
     private CommandController cli;
     private Player player;
 
@@ -58,5 +59,10 @@ public class CLIViewModel implements IRoomEscapeViewModel {
     @Override
     public void ShowUndoResult() {
         this.cli.AppendToResponse(CLIViewModel.undoneText);
+    }
+
+    @Override
+    public void ShowRestartCode() {
+        this.cli.AppendToResponse(CLIViewModel.startCode);
     }
 }
