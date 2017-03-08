@@ -30,7 +30,7 @@ public class PickupCommand implements IGameCommand {
         if(isOnGroup){
             ((ObjectGroup)object).PerformGroupPutDown(player);
         }
-        player.PutDown(object);
+        player.UnPickup(object);
     }
 
     @Override

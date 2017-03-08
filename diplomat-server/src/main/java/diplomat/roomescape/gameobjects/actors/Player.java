@@ -25,7 +25,7 @@ public class Player {
     }
 
     public boolean Pickup(AObtainable object) {
-        return playerInventory.AddToInventory(object);
+        return object.PickupSelf(this);
     }
 
     public Room GetRoom() {
@@ -52,8 +52,8 @@ public class Player {
         }
     }
 
-    public void PutDown(AObtainable object) {
-        playerInventory.Discard(object);
+    public void UnPickup(AObtainable object) {
+        object.UnPickupSelf(this);
     }
 
     public void Store(IGameCommand command) {

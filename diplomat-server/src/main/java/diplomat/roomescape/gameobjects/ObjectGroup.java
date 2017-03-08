@@ -111,7 +111,7 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
 
     public void PerformGroupPutDown(Player player) {
         for (AGameObject object : objects) {
-            player.PutDown((AObtainable) object);
+            player.UnPickup((AObtainable) object);
         }
     }
 }
