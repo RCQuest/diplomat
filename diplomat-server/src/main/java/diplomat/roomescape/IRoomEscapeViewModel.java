@@ -28,4 +28,6 @@ public interface IRoomEscapeViewModel {
     void ShowBreakResult(IBreakable object);
 
     void ShowOpenResult(IOpenable object);
+
+    void ShowGroupUseOnResult(IUsable object, ObjectGroup target);
 }

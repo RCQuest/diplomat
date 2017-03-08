@@ -22,11 +22,12 @@ public class HairDrier extends AObtainable implements IExaminable, IUsable{
 
     @Override
     public boolean Use(IUsableTarget target, Player player) {
-        boolean success = Ice.class.isInstance(target);
-        if(success){
+        if(Ice.class.isInstance(target)){
             ((Ice)target).Melt(player);
+            return true;
+        }  else {
+            return false;
         }
-        return success;
     }
 
     @Override
@@ -42,8 +43,7 @@ public class HairDrier extends AObtainable implements IExaminable, IUsable{
 
     @Override
     public void UnUse(IUsableTarget target, Player player) {
-        boolean success = Ice.class.isInstance(target);
-        if(success){
+        if(Ice.class.isInstance(target)){
             ((Ice)target).UnMelt(player);
         }
     }

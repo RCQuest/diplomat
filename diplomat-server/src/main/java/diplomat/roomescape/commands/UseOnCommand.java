@@ -3,6 +3,7 @@ package diplomat.roomescape.commands;
 import diplomat.roomescape.*;
 import diplomat.roomescape.gameobjects.IUsable;
 import diplomat.roomescape.gameobjects.IUsableTarget;
+import diplomat.roomescape.gameobjects.ObjectGroup;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 /**
@@ -21,14 +22,22 @@ public class UseOnCommand implements IGameCommand {
 
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
-        viewModel.ShowUseOnResult(object,target);
-        wasSuccessful = object.Use(target,player);
-        //TODO: what is target is object group?
+        if(ObjectGroup.class.isInstance(target)){
+            viewModel.ShowGroupUseOnResult(object,(ObjectGroup)target);
+            wasSuccessful = ((ObjectGroup)target).PerformGroupUseOn(object,player);
+        } else {
+            viewModel.ShowUseOnResult(object,target);
+            wasSuccessful = object.Use(target,player);
+        }
     }
 
     @Override
     public void Undo(Player player) {
-        object.UnUse(target,player);
+        if(ObjectGroup.class.isInstance(target)){
+            ((ObjectGroup)target).PerformGroupUnUseOn(object,player);
+        } else {
+            object.UnUse(target,player);
+        }
     }
 
     @Override

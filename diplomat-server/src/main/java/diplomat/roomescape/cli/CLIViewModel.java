@@ -80,4 +80,9 @@ public class CLIViewModel implements IRoomEscapeViewModel {
     public void ShowOpenResult(IOpenable object) {
         this.cli.AppendToResponse(object.GetOpenDescription());
     }
+
+    @Override
+    public void ShowGroupUseOnResult(IUsable object, ObjectGroup target) {
+        this.cli.AppendToResponse(target.GetUsageDescription(object));
+    }
 }

@@ -24,6 +24,7 @@ public class RoomFactory {
         put("trapdoor",Trapdoor.class);
         put("hairdrier",HairDrier.class);
         put("ice",Ice.class);
+        put("stone",Stone.class);
     }};
 
     public Room CreateRoom(String fileName){

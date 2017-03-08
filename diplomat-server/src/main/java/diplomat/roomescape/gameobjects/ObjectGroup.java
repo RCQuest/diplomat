@@ -114,4 +114,29 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
             player.UnPickup((AObtainable) object);
         }
     }
+
+    public boolean PerformGroupUseOn(IUsable useable, Player player) {
+        for (AGameObject object : objects) {
+            if(IUsableTarget.class.isInstance(object))
+                useable.Use(((IUsableTarget) object),player);
+        }
+        return false;
+    }
+
+    public void PerformGroupUnUseOn(IUsable hairDrier, Player player) {
+        for (AGameObject object : objects) {
+            if(IUsableTarget.class.isInstance(object))
+                hairDrier.UnUse(((IUsableTarget) object),player);
+        }
+    }
+
+    public String GetUsageDescription(IUsable useable) {
+        ArrayList<IUsableTarget> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IUsableTarget)object);
+        }
+        return o.stream()
+                .map(useable::GetUsageDescription)
+                .collect(Collectors.joining("\n"));
+    }
 }
