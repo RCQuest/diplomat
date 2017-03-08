@@ -445,20 +445,20 @@ diplomat.directive('scrollModeToggler', function () {
 //     };
 // }]);
 
-diplomat.directive('analyticsMonitor', ["localStorageService",function(localStorageService){
+diplomat.directive('analyticsMonitor', ["localStorageService","$location",function(localStorageService,$location){
     return {
         link: function (scope, element, attrs) {
         	element.bind("keydown", function (event) {
     			var ts = Date.now();
-        		var sessionData = localStorageService.get("sessionData");
+        		var sessionData = localStorageService.get($location.url());
         		if(sessionData){
         			sessionData[ts]=event.which;
         		} else {
         			sessionData = {};
         			sessionData[ts] = event.which;
         		}
-        		localStorageService.set("sessionData",sessionData);
-        		console.log(localStorageService.get("sessionData"));
+        		localStorageService.set($location.url(),sessionData);
+        		console.log(localStorageService.get($location.url()));
 
             	
         	});

@@ -23,6 +23,7 @@ public class UseOnCommand implements IGameCommand {
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
         viewModel.ShowUseOnResult(object,target);
         wasSuccessful = object.Use(target,player);
+        //TODO: what is target is object group?
     }
 
     @Override

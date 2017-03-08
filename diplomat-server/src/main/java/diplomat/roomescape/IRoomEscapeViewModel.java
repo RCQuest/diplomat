@@ -22,4 +22,6 @@ public interface IRoomEscapeViewModel {
     void ShowUndoResult();
 
     void ShowRestartCode();
+
+    void ShowPlaceOnResult(IPlaceable object, IPlaceableTarget target);
 }

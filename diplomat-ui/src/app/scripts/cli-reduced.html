@@ -1,3 +1,19 @@
+<script type="text/ng-template"  
+		id="undone_item.html">
+    <div class="output-box" 
+    	 ng-class="{ 'error' : line.output=='Invalid command.' }"
+		 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
+		 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
+		 	<span ng-bind-html="line.output | to_trusted"
+		 		  class="output-line">
+	 		</span>
+	</div>
+	<div ng-repeat="line in line.undone track by $index"
+		 ng-include="'undone_item.html'"
+		 class="sub-undo-group">
+	</div>
+</script>
+
 <div class="output-container">
 	<div id="output-area" 
 		 class="output-pushdown"
@@ -7,10 +23,14 @@
 			<div class="output-box" 
     	 		 ng-class="{ 'error' : line.output=='Invalid command.' }"
 				 id="{{ line.id==selectedOutput ? 'selected-output' : '' }}">
-				 	<span class="input-line">> {{line.input || '&nbsp;'}}</span>
+				 	<span class="input-line">{{line.input || '&nbsp;'}}</span>
 				 	<span ng-bind-html="line.output | to_trusted"
 				 		  class="output-line">
 			 		</span>
+			</div>
+			<div ng-repeat="line in line.undone track by $index"
+				 ng-include="'undone_item.html'"
+				 class="sub-undo-group">
 			</div>
 		</div>
 	</div>
