@@ -1,10 +1,7 @@
 package diplomat.roomescape;
 
 import diplomat.roomescape.gameobjects.AGameObject;
-import diplomat.roomescape.gameobjects.actors.Cloth;
-import diplomat.roomescape.gameobjects.actors.Door;
-import diplomat.roomescape.gameobjects.actors.Key;
-import diplomat.roomescape.gameobjects.actors.Room;
+import diplomat.roomescape.gameobjects.actors.*;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -23,6 +20,7 @@ public class RoomFactory {
         put("key",Key.class);
         put("door",Door.class);
         put("cloth",Cloth.class);
+        put("crate",Crate.class);
     }};
 
     public Room CreateRoom(String fileName){

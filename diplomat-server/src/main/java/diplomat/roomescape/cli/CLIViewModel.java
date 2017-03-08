@@ -75,4 +75,9 @@ public class CLIViewModel implements IRoomEscapeViewModel {
     public void ShowBreakResult(IBreakable object) {
         this.cli.AppendToResponse(object.GetBreakDescription());
     }
+
+    @Override
+    public void ShowOpenResult(IOpenable object) {
+        this.cli.AppendToResponse(object.GetOpenDescription());
+    }
 }

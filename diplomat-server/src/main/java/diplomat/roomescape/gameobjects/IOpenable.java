@@ -9,4 +9,6 @@ public interface IOpenable {
     boolean OpenSelf(Player player);
 
     void UnOpenSelf(Player player);
+
+    String GetOpenDescription();
 }
