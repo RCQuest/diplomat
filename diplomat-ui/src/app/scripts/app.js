@@ -7,6 +7,7 @@ import 'angular-ui-router';
 import 'angular-sanitize';
 import 'angularjs-scroll-glue';
 import 'angular-cookies';
+import 'angular-local-storage';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
@@ -21,6 +22,7 @@ var diplomat = angular.module('diplomat', [
   'ngSanitize',
   'luegg.directives',
   'ngCookies',
+  'LocalStorageModule',
   templatesModule.name
 ]);
 
@@ -158,6 +160,13 @@ diplomat.directive("cli",()=>{
                     console.log(content);
                 	if(content==="undone"){
             			$scope.undoLastCommand();
+            		} else if(content==="restarting") {
+            			$scope.outputLines = [
+							{
+								output:"Welcome! Type 'help' for more.",
+								id:0
+							}
+						];
                 	} else {
                 		$scope.outputLines[$scope.outputLines.length-1].output =
                     		(content).replace(/\n/g, "<br />");
@@ -316,10 +325,17 @@ diplomat.directive("cliReduced",()=>{
                     console.log(content);
                 	if(content==="undone"){
             			$scope.undoLastCommand();
-                	} else {
+                	} else if(content==="restarting") {
+            			$scope.outputLines = [
+							{
+								output:"Welcome! Type 'help' for more.",
+								id:0
+							}
+						];
+					} else {
                 		$scope.outputLines[$scope.outputLines.length-1].output =
                     		(content).replace(/\n/g, "<br />");
-                	}
+					}
 
                     $timeout();
 
@@ -408,20 +424,41 @@ diplomat.directive('scrollModeToggler', function () {
     };
 });
 
-diplomat.directive('analyticsMonitor', ["$cookies",function($cookies){
+// diplomat.directive('analyticsMonitor', ["$cookies",function($cookies){
+//     return {
+//         link: function (scope, element, attrs) {
+//         	element.bind("keydown", function (event) {
+//     			var ts = Date.now();
+//         		var sessionData = $cookies.getObject("sessionData");
+//         		if(sessionData){
+//         			sessionData[ts]=event.which;
+//         		} else {
+//         			sessionData = {};
+//         			sessionData[ts] = event.which;
+//         		}
+//         		$cookies.putObject("sessionData",sessionData);
+//         		console.log($cookies.getObject("sessionData"));
+
+            	
+//         	});
+//         }
+//     };
+// }]);
+
+diplomat.directive('analyticsMonitor', ["localStorageService",function(localStorageService){
     return {
         link: function (scope, element, attrs) {
         	element.bind("keydown", function (event) {
     			var ts = Date.now();
-        		var sessionData = $cookies.getObject("sessionData");
+        		var sessionData = localStorageService.get("sessionData");
         		if(sessionData){
         			sessionData[ts]=event.which;
         		} else {
         			sessionData = {};
         			sessionData[ts] = event.which;
         		}
-        		$cookies.putObject("sessionData",sessionData);
-        		console.log($cookies.getObject("sessionData"));
+        		localStorageService.set("sessionData",sessionData);
+        		console.log(localStorageService.get("sessionData"));
 
             	
         	});
@@ -456,7 +493,7 @@ diplomat.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse)
 // 	return {
 // 		link: function(scope,el,attrs){
 // 			element.bind("keydown", function (event) {
-				
+
 // 			}
 // 		}
 // 	}
