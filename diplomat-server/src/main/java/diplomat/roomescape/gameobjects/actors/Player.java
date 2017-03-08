@@ -63,4 +63,12 @@ public class Player {
     public void NextRoom() {
         nextRoomCallback.Invoke();
     }
+
+    public void AddToRoom(AGameObject obscuredItem) {
+        currentRoom.AddObject(obscuredItem);
+    }
+
+    public void RemoveFromRoom(AGameObject obscuredItem) {
+        currentRoom.RemoveObject(obscuredItem);
+    }
 }

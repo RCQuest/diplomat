@@ -76,4 +76,9 @@ public class Room extends AGameObject implements IExaminable {
         objects.add(gameObject);
         System.out.println(gameObject);
     }
+
+    public void RemoveObject(AGameObject obscuredItem) {
+        objects.remove(obscuredItem);
+        System.out.println(obscuredItem);
+    }
 }

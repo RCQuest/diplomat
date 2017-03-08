@@ -16,6 +16,18 @@ public class Cloth extends AObtainable implements IExaminable {
     }
 
     @Override
+    public boolean PickupSelf(Player player){
+        player.AddToRoom(obscuredItem);
+        return player.GetInventory().AddToInventory(this);
+    }
+
+    @Override
+    public void UnPickupSelf(Player player){
+        player.GetInventory().Discard(this);
+        player.RemoveFromRoom(obscuredItem);
+    }
+
+    @Override
     public String GetObtainedDescription() {
         return "Picking up the cloth reveals a "+obscuredItem.GetName()+".";
     }
