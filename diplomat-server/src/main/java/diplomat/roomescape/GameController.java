@@ -19,7 +19,7 @@ public class GameController {
         this.viewModel = viewModel;
         this.roomFactory = new RoomFactory();
 
-        ResetGame("/cratetrapdoor.room");
+        ResetGame("/hairdrier.room");
     }
 
     public void ResetGame(String roomPath) {
