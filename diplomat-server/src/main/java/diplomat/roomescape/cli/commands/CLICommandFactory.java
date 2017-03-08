@@ -26,8 +26,8 @@ public class CLICommandFactory {
         put("start", StartTokenStrategy.class);
         put("place", PlaceTokenStrategy.class);
         //put("type", PlaceTokenStrategy.class);
-        //put("break", BreakTokenStrategy.class);
-
+        put("break", BreakTokenStrategy.class);
+        put("open", OpenTokenStrategy.class);
     }};
     private ArrayList<AGameObject> roomObjects;
     private ArrayList<AGameObject> inventoryObjects;

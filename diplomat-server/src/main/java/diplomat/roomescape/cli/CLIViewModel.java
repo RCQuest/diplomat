@@ -70,4 +70,9 @@ public class CLIViewModel implements IRoomEscapeViewModel {
     public void ShowPlaceOnResult(IPlaceable object, IPlaceableTarget target) {
         this.cli.AppendToResponse(object.GetPlaceDescription(target));
     }
+
+    @Override
+    public void ShowBreakResult(IBreakable object) {
+        this.cli.AppendToResponse(object.GetBreakDescription());
+    }
 }
