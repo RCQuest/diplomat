@@ -14,12 +14,14 @@ import java.util.Stack;
 public class Player {
     private Room currentRoom;
     private Callback nextRoomCallback;
+    private Callback gameOverCallback;
     private Inventory playerInventory;
     private Stack<IGameCommand> commandHistory;
 
-    public Player(Room initialRoom, Callback nextRoomCallback){
+    public Player(Room initialRoom, Callback nextRoomCallback, Callback gameOverCallback){
         this.currentRoom = initialRoom;
         this.nextRoomCallback = nextRoomCallback;
+        this.gameOverCallback = gameOverCallback;
         this.playerInventory = new Inventory();
         this.commandHistory = new Stack<>();
     }
@@ -70,5 +72,9 @@ public class Player {
 
     public void RemoveFromRoom(AGameObject obscuredItem) {
         currentRoom.RemoveObject(obscuredItem);
+    }
+
+    public void InvokeGameOver(){
+        gameOverCallback.Invoke();
     }
 }

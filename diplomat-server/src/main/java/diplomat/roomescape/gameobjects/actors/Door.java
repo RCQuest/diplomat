@@ -26,7 +26,7 @@ public class Door extends AGameOverInvoker implements IStandaloneUsable, IUsable
     }
 
     @Override
-    public boolean Use() {
+    public boolean Use(Player player) {
         if(!locked)
             this.gameOverCallback.Invoke();
         return !locked;

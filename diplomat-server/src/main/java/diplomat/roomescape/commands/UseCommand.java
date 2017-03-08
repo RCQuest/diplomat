@@ -18,7 +18,7 @@ public class UseCommand implements IGameCommand {
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
         viewModel.ShowUseResult(object);
-        wasSuccessful = object.Use();
+        wasSuccessful = object.Use(player);
     }
 
     @Override

@@ -32,13 +32,13 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
     }
 
     @Override
-    public boolean Use() {
+    public boolean Use(Player player) {
         ArrayList<IStandaloneUsable> o = new ArrayList<>();
         for (AGameObject object : objects) {
             o.add((IStandaloneUsable)object);
         }
         return o.stream()
-                .map(IStandaloneUsable::Use)
+                .map((iStandaloneUsable) -> iStandaloneUsable.Use(player))
                 .reduce(true, (a, b) -> a && b);
     }
 

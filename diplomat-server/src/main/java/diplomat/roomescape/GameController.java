@@ -19,12 +19,12 @@ public class GameController {
         this.viewModel = viewModel;
         this.roomFactory = new RoomFactory();
 
-        ResetGame("/cratekey.room");
+        ResetGame("/cratetrapdoor.room");
     }
 
     public void ResetGame(String roomPath) {
         Room room = roomFactory.CreateRoom(roomPath);
-        this.player = new Player(room,this::NextRoom);
+        this.player = new Player(room,this::NextRoom,this::OnGameOver);
         viewModel.SetPlayer(this.player);
         room.AddObject(this.player.GetInventory());
         SubscribeToGameOverCallbacks();
