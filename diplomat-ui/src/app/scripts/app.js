@@ -231,6 +231,10 @@ diplomat.directive("cli",()=>{
 					history: ["iceblock","hairdrier","door","room","look"]
 				},
 				{
+					command:"break iceblock",
+					history: ["iceblock","hairdrier","door","room","look"]
+				},
+				{
 					command:"look hairdrier",
 					history: ["iceblock","hairdrier","door","room","look"]
 				},
@@ -252,14 +256,18 @@ diplomat.directive("cli",()=>{
 			$scope.FilteredSuggestions = [];
 
 			$scope.helpItems = [
-				"help - displays help",
 				"look - describes the room",
-				"look (object) - describes the object",
-				"use (object) on (target) - uses one item on another",
-				"pickup (object) - puts an object in your inventory",
-				"use (object) - uses an item",
-				"every (object) - searches objects in the room",
-				"undo - reverses the previous command"
+				"look <object> - describes the object ",
+				"look inventory - shows what objects you are holding",
+				"use <object> - performs some action with the object ",
+				"use <object> on <target> - applies the object to the target in some way ",
+				"pickup <object> - puts an object in your inventory ",
+				"every <query> - searches the room for all objects with names matching the query (used in the context of other commands) ",
+				"place <object> on <target> - places or attaches an object to the target in some manner",
+				"break <object> - attempts to destroy the object",
+				"open <object> - opens a container of some kind",
+				"help - shows this list",
+				"undo - reverses the effect of the last command"
 			];
 			$scope.scrollModeToggle = (toggle)=>{
 				$scope.scrollMode = toggle;
