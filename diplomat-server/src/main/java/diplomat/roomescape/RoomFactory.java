@@ -30,6 +30,7 @@ public class RoomFactory {
         put("chain",Chain.class);
         put("rope",Rope.class);
         put("portcullis",Portcullis.class);
+        put("tube",Tube.class);
     }};
 
     public Room CreateRoom(String fileName){
@@ -77,6 +78,21 @@ public class RoomFactory {
                                                     .newInstance(objectStringsToGameObjectClass
                                                             .get(paramStrings[4])
                                                             .newInstance()))));
+                    objects.add(object);
+                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            } if(paramStrings.length==3) {
+                try {
+                    System.out.println(Arrays.toString(paramStrings));
+                    AGameObject object = objectStringsToGameObjectClass
+                            .get(paramStrings[0])
+                            .getDeclaredConstructor(AGameObject.class,float.class)
+                            .newInstance(
+                                    objectStringsToGameObjectClass
+                                    .get(paramStrings[1])
+                                    .newInstance(),
+                                    Float.valueOf(paramStrings[2]));
                     objects.add(object);
                 } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     e.printStackTrace();
