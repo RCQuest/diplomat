@@ -26,6 +26,30 @@ var diplomat = angular.module('diplomat', [
   templatesModule.name
 ]);
 
+function compareTwoStrings(sit,sug,bonus){
+	var disallowedBonus = ["look","pickup","use","on"];
+	sit = sit.replace(/[^a-zA-Z ]/g, "");
+	sug = sug.replace(/[^a-zA-Z ]/g, "");
+	sit = sit.toLowerCase().split(" ");
+	sug = sug.toLowerCase().split(" ");
+	var score = 0;
+	// console.log(sug);
+	// console.log(sit);
+
+	sit.forEach(a=>{
+		sug.forEach(b=>{
+			if(a===b) {
+				if(bonus.indexOf(a)!=-1&&disallowedBonus.indexOf(a)==-1)
+					score+=5;
+				else
+					score++;
+				// console.log("equal!");
+			}
+		});
+	});
+	return score;
+}
+
 diplomat.directive("cli",()=>{
 	return {
 		controller:($scope,$anchorScroll,$location,$timeout,$sce)=>{
@@ -40,18 +64,191 @@ diplomat.directive("cli",()=>{
 			$scope.selectedOutput = 2;
 			$scope.scrollMode = false;
 
-			$scope.suggestions = [{
-				command: "help",
-				history: ["invalid"]
-			},
-			{
-				command: "look inventory",
-				history: ["pickup","help"]
-			},
-			{
-				command: "look",
-				history: ["use","help"]
-			}];
+			
+			$scope.suggestions = [
+				{
+					command: "help",
+					history: ["invalid"]
+				},
+				{
+					command: "undo",
+					history: ["invalid","snaps","tension"]
+				},
+				{
+					command: "look inventory",
+					history: ["pickup","help","invalid"]
+				},
+				{
+					command: "look",
+					history: ["use","help","welcome","help","invalid"]
+				},
+				{
+					command:"pickup key",
+					history: ["key","door","room","reveals","floats","water","tube","snowglobe","debris","displaces","stone","crate","open","melt","puddle"]
+				},
+				{
+					command:"use key on door",
+					history: ["key","pickup"]
+				},
+				{
+					command:"use door",
+					history: ["unlock", "door","key","unlocks","click","heft"]
+				},
+				{
+					command:"look door",
+					history: ["unlock", "door","key","room","look"]
+				},
+				{
+					command:"start",
+					history: ["congratulations","escaped","start"]
+				},
+				{
+					command:"pickup cloth",
+					history: ["cloth","look"]
+				},
+				{
+					command:"use pail on tube",
+					history: ["pail","tube","door","look","room"]
+				},
+				{
+					command:"look pail",
+					history: ["pail","tube","door","look","room"]
+				},
+				{
+					command:"look tube",
+					history: ["pail","tube","door","look","room","stone","displaces","insert","water"]
+				},
+				{
+					command:"look snowglobe",
+					history: ["snowglobe","look","room","door"]
+				},
+				{
+					command:"use snowglobe",
+					history: ["snowglobe","look","room","door"]
+				},
+				{
+					command:"break snowglobe",
+					history: ["snowglobe","look","room","door"]
+				},
+				{
+					command:"place weight on floorpad",
+					history: ["floorpad","weight","door"]
+				},
+				{
+					command:"look weight",
+					history: ["floorpad","weight","door","portcullis","chain"]
+				},
+				{
+					command:"look floorpad",
+					history: ["floorpad","weight","door"]
+				},
+				{
+					command:"look portcullis",
+					history: ["portcullis","chain","weight","room","look"]
+				},
+				{
+					command:"look chain",
+					history: ["portcullis","chain","weight","room","look"]
+				},
+				{
+					command:"place weight on chain",
+					history: ["portcullis","chain","weight","room","look"]
+				},
+				{
+					command:"use chain",
+					history: ["portcullis","chain","weight","room","look"]
+				},
+				{
+					command:"place every weight on chain",
+					history: ["portcullis","chain","weight","room","look"]
+				},
+				{
+					command:"use portcullis",
+					history: ["portcullis","chain","weight","heavy","opened","hook"]
+				},
+				{
+					command:"look stone",
+					history: ["stone","tube","door","look"]
+				},
+				{
+					command:"use stone on tube",
+					history: ["stone","tube","door","look"]
+				},
+				{
+					command:"use every stone on tube",
+					history: ["stone","tube","door","look"]
+				},
+				{
+					command:"use rope",
+					history: ["portcullis","rope","weight","room","look"]
+				},
+				{
+					command:"look rope",
+					history: ["portcullis","rope","weight","room","look"]
+				},
+				{
+					command:"place weight on rope",
+					history: ["portcullis","rope","weight","room","look","place","on"]
+				},
+				{
+					command:"place every weight on rope",
+					history: ["portcullis","rope","weight","room","look"]
+				},
+				{
+					command:"look ladder",
+					history: ["ladder","hatch","room"]
+				},
+				{
+					command:"look hatch",
+					history: ["ladder","hatch","room"]
+				},
+				{
+					command:"use ladder on hatch",
+					history: ["ladder","hatch","room"]
+				},
+				{
+					command:"look crate",
+					history: ["crate","door","room"]
+				},
+				{
+					command:"open crate",
+					history: ["crate","door","room"]
+				},
+				{
+					command:"open every crate",
+					history: ["crate","door","room"]
+				},
+				{
+					command:"break every crate",
+					history: ["crate","door","room"]
+				},
+				{
+					command:"break crate",
+					history: ["crate","door","room","nothing"]
+				},
+				{
+					command:"look iceblock",
+					history: ["iceblock","hairdrier","door","room","look"]
+				},
+				{
+					command:"look hairdrier",
+					history: ["iceblock","hairdrier","door","room","look"]
+				},
+				{
+					command:"use hairdrier on iceblock",
+					history: ["iceblock","hairdrier","door","room","look"]
+				},
+				{
+					command:"use hairdrier on every iceblock",
+					history: ["iceblock","hairdrier","door","room","look"]
+				},
+				{
+					command:"use trapdoor",
+					history: ["stomp","crate","trapdoor","splinters","rubble"]
+				}
+
+			];
+
 			$scope.FilteredSuggestions = [];
 
 			$scope.helpItems = [
@@ -424,27 +621,6 @@ diplomat.directive('scrollModeToggler', function () {
     };
 });
 
-// diplomat.directive('analyticsMonitor', ["$cookies",function($cookies){
-//     return {
-//         link: function (scope, element, attrs) {
-//         	element.bind("keydown", function (event) {
-//     			var ts = Date.now();
-//         		var sessionData = $cookies.getObject("sessionData");
-//         		if(sessionData){
-//         			sessionData[ts]=event.which;
-//         		} else {
-//         			sessionData = {};
-//         			sessionData[ts] = event.which;
-//         		}
-//         		$cookies.putObject("sessionData",sessionData);
-//         		console.log($cookies.getObject("sessionData"));
-
-            	
-//         	});
-//         }
-//     };
-// }]);
-
 diplomat.directive('analyticsMonitor', ["localStorageService","$location",function(localStorageService,$location){
     return {
         link: function (scope, element, attrs) {
@@ -538,16 +714,17 @@ diplomat.filter('suggest', function() {
 	   		return sortedSuggestions;
 
 	    angular.forEach(items, function(item) {
-	        var sim = StringSimiliarity
-				.compareTwoStrings(
-					item.history.join(), 
-					lastCommand.input+" "+lastCommand.output);
+	        var sim = compareTwoStrings(
+					item.history.join(" "), 
+					lastCommand.input+" "+lastCommand.output,
+					item.command.split(" "));
 			var command = item.command;
-			if(sim>0.1) suggestions.push({"command":command, "suitability":sim});
+			if(sim>5) suggestions.push({"command":command, "suitability":sim});
 	    });
 
 	    suggestions.sort(function(a,b){
-	        if(a.suitability < b.suitability) return 1;
+	        if(a.command==="undo") return -1;
+	        else if(a.suitability < b.suitability) return 1;
 	        else if(a.suitability > b.suitability) return -1;
 	        else return 0;
 	    });
