@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * Created by rachelcabot on 04/03/2017.
  */
-public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget,IPlaceable,IPlaceableTarget,IBreakable {
+public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget,IPlaceable,IPlaceableTarget,IBreakable,IOpenable {
     private final AGameObject[] objects;
 
     public ObjectGroup(AGameObject[] objects) {
@@ -193,6 +193,34 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
         }
         return o.stream()
                 .map(ob->ob.GetPlaceDescription(target))
+                .collect(Collectors.joining("\n"));
+    }
+
+    @Override
+    public boolean OpenSelf(Player player) {
+        for (AGameObject object : objects) {
+            if(IOpenable.class.isInstance(object))
+                ((IOpenable)object).OpenSelf(player);
+        }
+        return true;
+    }
+
+    @Override
+    public void UnOpenSelf(Player player) {
+        for (AGameObject object : objects) {
+            if(IOpenable.class.isInstance(object))
+                ((IOpenable)object).UnOpenSelf(player);
+        }
+    }
+
+    @Override
+    public String GetOpenDescription() {
+        ArrayList<IOpenable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IOpenable)object);
+        }
+        return o.stream()
+                .map(IOpenable::GetOpenDescription)
                 .collect(Collectors.joining("\n"));
     }
 }

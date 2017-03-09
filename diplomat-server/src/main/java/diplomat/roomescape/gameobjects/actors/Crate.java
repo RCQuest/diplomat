@@ -9,12 +9,15 @@ public class Crate extends AGameObject implements IExaminable, IBreakable, IOpen
 
     private AGameObject obscuredObject;
     private AObtainable containedObject;
+    private Crate anotherCrate;
     private boolean opened;
 
     public Crate(AGameObject o) {
         super("crate");
         if(AObtainable.class.isInstance(o))
             this.containedObject =(AObtainable) o;
+        else if(Crate.class.isInstance(o))
+            this.anotherCrate = (Crate) o;
         else
             this.obscuredObject = o;
         this.opened = false;
@@ -42,14 +45,16 @@ public class Crate extends AGameObject implements IExaminable, IBreakable, IOpen
     public String GetBreakDescription() {
         return "You stomp the crate with all your might. " +
                 "It splinters into pieces. " +
-                "Amongst the rubble, there's a "+GetObject().GetName();
+                "Amongst the rubble, there's a "+GetObject().GetName()+" inside.";
     }
 
     private AGameObject GetObject() {
-        if(obscuredObject==null)
+        if(containedObject!=null)
             return containedObject;
-        else
-            return obscuredObject;
+        else if(anotherCrate!=null){
+            return anotherCrate;
+        }
+        return obscuredObject;
     }
 
     @Override
@@ -61,7 +66,7 @@ public class Crate extends AGameObject implements IExaminable, IBreakable, IOpen
 
     @Override
     public boolean OpenSelf(Player player) {
-        if(containedObject!=null && !opened) {
+        if((containedObject!=null || anotherCrate!=null) && !opened) {
             player.AddToRoom(GetObject());
             opened = true;
             return true;
@@ -71,15 +76,16 @@ public class Crate extends AGameObject implements IExaminable, IBreakable, IOpen
 
     @Override
     public void UnOpenSelf(Player player) {
-        if(containedObject!=null) player.RemoveFromRoom(GetObject());
+        if((containedObject!=null || anotherCrate!=null))
+            player.RemoveFromRoom(GetObject());
         opened = false;
     }
 
     @Override
     public String GetOpenDescription() {
-        if(containedObject!=null){
+        if((containedObject!=null || anotherCrate!=null)){
             return "You open the crate up. " +
-                    "There's a "+containedObject.GetName();
+                    "There's a "+GetObject().GetName();
         } else {
             return "You open the crate up. There's nothing in it.";
         }

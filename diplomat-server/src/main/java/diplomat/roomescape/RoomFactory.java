@@ -59,6 +59,28 @@ public class RoomFactory {
                 } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
+            } else if(paramStrings.length==5) {
+                try {
+                    System.out.println(Arrays.toString(paramStrings));
+                    AGameObject object = objectStringsToGameObjectClass
+                            .get(paramStrings[0])
+                            .getDeclaredConstructor(AGameObject.class)
+                            .newInstance(objectStringsToGameObjectClass
+                                    .get(paramStrings[1])
+                                    .getDeclaredConstructor(AGameObject.class)
+                                    .newInstance(objectStringsToGameObjectClass
+                                            .get(paramStrings[2])
+                                            .getDeclaredConstructor(AGameObject.class)
+                                            .newInstance(objectStringsToGameObjectClass
+                                                    .get(paramStrings[3])
+                                                    .getDeclaredConstructor(AGameObject.class)
+                                                    .newInstance(objectStringsToGameObjectClass
+                                                            .get(paramStrings[4])
+                                                            .newInstance()))));
+                    objects.add(object);
+                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
             } else {
                 try {
                     AGameObject object = objectStringsToGameObjectClass.get(objectString).newInstance();
