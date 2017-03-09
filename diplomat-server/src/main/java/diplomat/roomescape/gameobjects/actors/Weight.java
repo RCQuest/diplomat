@@ -61,7 +61,7 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
                 a = "The portcullis has opened! ";
             if(((Rope)target).isTooManyWeights())
                 a = "You placed too many weights on, and the rope snaps under the tension!";
-            return "You hook the heavy weight onto the chain. "+a;
+            return "You hook the heavy weight onto the rope. "+a;
         } else {
             return "You move the heavy weight onto the object. Nothing happens.";
         }
