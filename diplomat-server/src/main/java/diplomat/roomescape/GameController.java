@@ -19,7 +19,7 @@ public class GameController {
         this.viewModel = viewModel;
         this.roomFactory = new RoomFactory();
 
-        ResetGame("/watertube.room");
+        ResetGame("/sphere.room");
     }
 
     public void ResetGame(String roomPath) {
@@ -31,7 +31,7 @@ public class GameController {
     }
 
     public void NextRoom(){
-        ResetGame("/justdoor.room");
+        ResetGame("/ladderhatch.room");
     }
 
     private void SubscribeToGameOverCallbacks() {
