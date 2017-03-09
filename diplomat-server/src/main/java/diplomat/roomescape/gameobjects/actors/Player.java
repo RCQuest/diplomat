@@ -77,4 +77,12 @@ public class Player {
     public void InvokeGameOver(){
         gameOverCallback.Invoke();
     }
+
+    public void UnlockDoor() {
+        ((Door)currentRoom.GetRoomObject("door")).Unlock();
+    }
+
+    public void LockDoor() {
+        ((Door)currentRoom.GetRoomObject("door")).Lock();
+    }
 }
