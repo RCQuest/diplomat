@@ -8,18 +8,23 @@ import diplomat.roomescape.gameobjects.actors.Player;
 import diplomat.roomescape.gameobjects.actors.Room;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Stack;
 
 public class GameController {
 
     private IRoomEscapeViewModel viewModel;
+    private Stack<String> scenarioList;
     private Player player;
     private RoomFactory roomFactory;
 
-    public GameController(IRoomEscapeViewModel viewModel) {
+
+    public GameController(IRoomEscapeViewModel viewModel, Stack<String> scenarioList) {
         this.viewModel = viewModel;
+        this.scenarioList = scenarioList;
         this.roomFactory = new RoomFactory();
 
-        ResetGame("/pailtube.room");
+        ResetGame(this.scenarioList.pop());
     }
 
     public void ResetGame(String roomPath) {
@@ -31,7 +36,7 @@ public class GameController {
     }
 
     public void NextRoom(){
-        ResetGame("/ladderhatch.room");
+        ResetGame(scenarioList.pop());
     }
 
     private void SubscribeToGameOverCallbacks() {

@@ -44,7 +44,7 @@ public class CLIViewModel implements IRoomEscapeViewModel {
 
     @Override
     public void ShowGameComplete() {
-        this.cli.AppendToResponse("You have escaped the room! Congratulations.");
+        this.cli.AppendToResponse("You have escaped the room! Congratulations.\n Type 'start' when you're ready to start the next room.");
     }
 
     public void SetPlayer(Player player) {
