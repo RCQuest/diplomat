@@ -27,6 +27,8 @@ public class RoomFactory {
         put("stone",Stone.class);
         put("floorpad",FloorPad.class);
         put("weight",Weight.class);
+        put("chain",Chain.class);
+        put("portcullis",Portcullis.class);
     }};
 
     public Room CreateRoom(String fileName){

@@ -15,13 +15,16 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
 
     @Override
     public String Describe() {
-        return "It's a trapezoidal weight! It says 100KG. ";
+        return "It's a trapezoidal weight! It says 100KG, and has a hook on the top. ";
     }
 
     @Override
     public boolean Place(IPlaceableTarget target, Player player) {
         if (FloorPad.class.isInstance(target)) {
             ((FloorPad)target).Place(this,player);
+            return true;
+        } else if(Chain.class.isInstance(target)) {
+            ((Chain)target).PlaceWeight(this,player);
             return true;
         } else {
             return false;
@@ -32,6 +35,8 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
     public void UnPlace(IPlaceableTarget target, Player player) {
         if (FloorPad.class.isInstance(target)) {
             ((FloorPad)target).UnPlace(this,player);
+        } else if(Chain.class.isInstance(target)) {
+            ((Chain)target).UnPlaceWeight(this,player);
         }
     }
 
@@ -40,6 +45,11 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
         if (FloorPad.class.isInstance(target)) {
 
             return "You heft the heavy weight onto the pressure pad. You hear the door click as it unlocks. ";
+        } else if(Chain.class.isInstance(target)) {
+            String a="";
+            if(((Chain)target).isEnoughWeights())
+                a = "The portcullis has opened! ";
+            return "You hook the heavy weight onto the chain. "+a;
         } else {
             return "You move the heavy weight onto the object. Nothing happens.";
         }

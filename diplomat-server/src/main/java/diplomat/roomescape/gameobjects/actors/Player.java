@@ -85,4 +85,14 @@ public class Player {
     public void LockDoor() {
         ((Door)currentRoom.GetRoomObject("door")).Lock();
     }
+
+    public void UnlockPortcullis() {
+        ((Portcullis)currentRoom.GetRoomObject("portcullis")).Open();
+
+    }
+
+    public void LockPortcullis() {
+        ((Portcullis)currentRoom.GetRoomObject("portcullis")).Shut();
+
+    }
 }

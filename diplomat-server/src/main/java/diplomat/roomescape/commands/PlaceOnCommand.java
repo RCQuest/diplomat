@@ -21,8 +21,8 @@ public class PlaceOnCommand implements IGameCommand {
 
     @Override
     public void Execute(Player player, IRoomEscapeViewModel viewModel) {
-        viewModel.ShowPlaceOnResult(object,target);
         wasSuccessful = object.Place(target,player);
+        viewModel.ShowPlaceOnResult(object,target);
     }
 
     @Override

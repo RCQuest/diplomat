@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * Created by rachelcabot on 04/03/2017.
  */
-public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget {
+public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneUsable,IUsable,IUsableTarget,IPlaceable,IPlaceableTarget,IBreakable {
     private final AGameObject[] objects;
 
     public ObjectGroup(AGameObject[] objects) {
@@ -137,6 +137,62 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
         }
         return o.stream()
                 .map(useable::GetUsageDescription)
+                .collect(Collectors.joining("\n"));
+    }
+
+    @Override
+    public boolean BreakSelf(Player player) {
+        for (AGameObject object : objects) {
+            if(IBreakable.class.isInstance(object))
+                ((IBreakable)object).BreakSelf(player);
+        }
+        return true;
+    }
+
+    @Override
+    public String GetBreakDescription() {
+        ArrayList<IBreakable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IBreakable)object);
+        }
+        return o.stream()
+                .map(IBreakable::GetBreakDescription)
+                .collect(Collectors.joining("\n"));
+    }
+
+    @Override
+    public void UnBreakSelf(Player player) {
+        for (AGameObject object : objects) {
+            if(IBreakable.class.isInstance(object))
+                ((IBreakable)object).UnBreakSelf(player);
+        }
+    }
+
+    @Override
+    public boolean Place(IPlaceableTarget target, Player player) {
+        for (AGameObject object : objects) {
+            if(IPlaceable.class.isInstance(object))
+                ((IPlaceable)object).Place(target,player);
+        }
+        return true;
+    }
+
+    @Override
+    public void UnPlace(IPlaceableTarget target, Player player) {
+        for (AGameObject object : objects) {
+            if(IPlaceable.class.isInstance(object))
+                ((IPlaceable)object).UnPlace(target,player);
+        }
+    }
+
+    @Override
+    public String GetPlaceDescription(IPlaceableTarget target) {
+        ArrayList<IPlaceable> o = new ArrayList<>();
+        for (AGameObject object : objects) {
+            o.add((IPlaceable)object);
+        }
+        return o.stream()
+                .map(ob->ob.GetPlaceDescription(target))
                 .collect(Collectors.joining("\n"));
     }
 }
