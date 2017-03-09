@@ -75,4 +75,22 @@ public class Tube extends AGameObject implements IExaminable, IUsableTarget {
             }
         }
     }
+
+    public void AlterBaseWaterLevel(double water,Player player) {
+        this.baseWaterLevel+=water;
+        if(WaterLevel()>0.9f) {
+            if(!player.ObjectIsInRoom(floatingObject)){
+                player.AddToRoom(floatingObject);
+            }
+        }
+    }
+
+    public void UnAlterBaseWaterLevel(double water,Player player) {
+        this.baseWaterLevel-=water;
+        if(WaterLevel()<1.0f) {
+            if(player.ObjectIsInRoom(floatingObject)){
+                player.RemoveFromRoom(floatingObject);
+            }
+        }
+    }
 }

@@ -34,6 +34,7 @@ public class RoomFactory {
         put("ladder",Ladder.class);
         put("hatch",Hatch.class);
         put("snowglobe",Snowglobe.class);
+        put("pail",Pail.class);
     }};
 
     public Room CreateRoom(String fileName){
