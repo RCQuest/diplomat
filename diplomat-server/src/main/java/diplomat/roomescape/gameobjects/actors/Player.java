@@ -95,4 +95,8 @@ public class Player {
         ((Portcullis)currentRoom.GetRoomObject("portcullis")).Shut();
 
     }
+
+    public boolean ObjectIsInRoom(AGameObject o) {
+        return currentRoom.GetAllRoomObjects().contains(o);
+    }
 }

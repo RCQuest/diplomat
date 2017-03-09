@@ -26,6 +26,9 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
         } else if(Chain.class.isInstance(target)) {
             ((Chain)target).PlaceWeight(this,player);
             return true;
+        }else if(Rope.class.isInstance(target)) {
+            ((Rope)target).PlaceWeight(this,player);
+            return true;
         } else {
             return false;
         }
@@ -37,6 +40,8 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
             ((FloorPad)target).UnPlace(this,player);
         } else if(Chain.class.isInstance(target)) {
             ((Chain)target).UnPlaceWeight(this,player);
+        }else if(Rope.class.isInstance(target)) {
+            ((Rope)target).UnPlaceWeight(this,player);
         }
     }
 
@@ -49,6 +54,13 @@ public class Weight extends AGameObject implements IExaminable, IPlaceable {
             String a="";
             if(((Chain)target).isEnoughWeights())
                 a = "The portcullis has opened! ";
+            return "You hook the heavy weight onto the chain. "+a;
+        }else if(Rope.class.isInstance(target)) {
+            String a="";
+            if(((Rope)target).isEnoughWeights())
+                a = "The portcullis has opened! ";
+            if(((Rope)target).isTooManyWeights())
+                a = "You placed too many weights on, and the rope snaps under the tension!";
             return "You hook the heavy weight onto the chain. "+a;
         } else {
             return "You move the heavy weight onto the object. Nothing happens.";

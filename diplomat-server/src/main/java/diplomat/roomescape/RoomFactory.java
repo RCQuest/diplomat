@@ -28,6 +28,7 @@ public class RoomFactory {
         put("floorpad",FloorPad.class);
         put("weight",Weight.class);
         put("chain",Chain.class);
+        put("rope",Rope.class);
         put("portcullis",Portcullis.class);
     }};
 
