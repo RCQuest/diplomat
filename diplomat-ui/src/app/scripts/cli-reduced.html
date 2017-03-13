@@ -8,16 +8,17 @@
 		 		  class="output-line">
 	 		</span>
 	</div>
-	<div ng-repeat="line in line.undone track by $index"
+	<!-- <div ng-repeat="line in line.undone track by $index"
 		 ng-include="'undone_item.html'"
 		 class="sub-undo-group">
-	</div>
+	</div> -->
 </script>
 
 <div class="output-container">
 	<div id="output-area" 
 		 class="output-pushdown"
-		 scroll-glue>
+		 scroll-glue
+		 output-monitor>
 		<div class="top-undo-group"
 			 ng-repeat="line in outputLines track by $index">
 			<div class="output-box" 

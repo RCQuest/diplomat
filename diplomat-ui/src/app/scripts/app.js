@@ -60,6 +60,15 @@ diplomat.directive("cli",()=>{
 					id:0
 				}
 			];
+			$scope.keyFreq={
+				"arrows":0,
+				"chars":0,
+				"returns":0,
+				"undos":0,
+				"errors":0,
+				"helps":0
+			};
+			$scope.task=0;
 			$scope.nextOutputId = 1;
 			$scope.selectedOutput = 2;
 			$scope.scrollMode = false;
@@ -275,7 +284,7 @@ diplomat.directive("cli",()=>{
 
 			$scope.addOutputLine = (line)=>{
 				$scope.selectedOutput = $scope.outputLines.length;
-				console.log(line);
+				// console.log(line);
 				if(!line) return;
 				sendCommand(line);
 				$scope.outputLines.push({input:line,id:$scope.nextOutputId});
@@ -292,8 +301,8 @@ diplomat.directive("cli",()=>{
 			}
 
 			$scope.findSelectionWithId = (id,output) =>{
-				console.log($scope.FilteredSuggestions);
-				console.log(id);
+				// console.log($scope.FilteredSuggestions);
+				// console.log(id);
 				var o = $scope.findOutputWithId(id,output).input;
 				if(o===""){
 					return $scope.findSuggestionWithId(id);
@@ -305,7 +314,7 @@ diplomat.directive("cli",()=>{
 			$scope.findSuggestionWithId = (id) =>{
 				id -= $scope.nextOutputId;
 				id -= 1;
-				console.log(id);
+				// console.log(id);
 				if(id<0||id<$scope.FilteredSuggestions.length)
 					return $scope.FilteredSuggestions[id];
 				else 
@@ -362,16 +371,28 @@ diplomat.directive("cli",()=>{
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
                 	var content = JSON.parse(greeting.body).content
-                    console.log(content);
+					if(content==="Invalid command.") {
+            			$scope.keyFreq["errors"]++;
+            		}
                 	if(content==="undone"){
             			$scope.undoLastCommand();
-            		} else if(content==="restarting") {
+            			$scope.keyFreq["undos"]++;
+            		}  else if(content==="restarting") {
             			$scope.outputLines = [
 							{
 								output:"Welcome! Type 'help' for more.",
 								id:0
 							}
 						];
+						$scope.task++;
+						$scope.keyFreq={
+							"arrows":0,
+							"chars":0,
+							"returns":0,
+							"undos":0,
+							"errors":0,
+							"helps":0
+						};
                 	} else {
                 		$scope.outputLines[$scope.outputLines.length-1].output =
                     		(content).replace(/\n/g, "<br />");
@@ -383,7 +404,10 @@ diplomat.directive("cli",()=>{
             });
 
             var sendCommand = function(command){
-            	console.log('tryina senddd '+command);
+            	// console.log('tryina senddd '+command);
+            	if(command==="help"){
+            		$scope.keyFreq["helps"]++;
+            	}
             	stompClient.send(
             		"/diplomat/command",
             		{},
@@ -409,38 +433,27 @@ diplomat.directive("cliReduced",()=>{
 			$scope.nextOutputId = 1;
 			$scope.selectedOutput = 2;
 			$scope.scrollMode = false;
+			$scope.task=0;
+			$scope.keyFreq={
+				"arrows":0,
+				"chars":0,
+				"returns":0,
+				"undos":0,
+				"errors":0,
+				"helps":0
+			};
 
-			$scope.suggestions = [{
-				command: "help",
-				history: ["invalid"]
-			},
-			{
-				command: "look inventory",
-				history: ["pickup","help"]
-			},
-			{
-				command: "look",
-				history: ["use","help"]
-			}];
+			$scope.suggestions = [];
 			$scope.FilteredSuggestions = [];
 
-			$scope.helpItems = [
-				"help - displays help",
-				"look - describes the room",
-				"look (object) - describes the object",
-				"use (object) on (target) - uses one item on another",
-				"pickup (object) - puts an object in your inventory",
-				"use (object) - uses an item",
-				"every (object) - searches objects in the room",
-				"undo - reverses the previous command"
-			];
+			$scope.helpItems = [];
 			$scope.scrollModeToggle = (toggle)=>{
 				$scope.scrollMode = toggle;
 			}
 
 			$scope.addOutputLine = (line)=>{
 				$scope.selectedOutput = $scope.outputLines.length;
-				console.log(line);
+				// console.log(line);
 				if(!line) return;
 				sendCommand(line);
 				$scope.outputLines.push({input:line,id:$scope.nextOutputId});
@@ -457,8 +470,8 @@ diplomat.directive("cliReduced",()=>{
 			}
 
 			$scope.findSelectionWithId = (id,output) =>{
-				console.log($scope.FilteredSuggestions);
-				console.log(id);
+				// console.log($scope.FilteredSuggestions);
+				// console.log(id);
 				var o = $scope.findOutputWithId(id,output).input;
 				if(o===""){
 					return $scope.findSuggestionWithId(id);
@@ -470,7 +483,7 @@ diplomat.directive("cliReduced",()=>{
 			$scope.findSuggestionWithId = (id) =>{
 				id -= $scope.nextOutputId;
 				id -= 1;
-				console.log(id);
+				// console.log(id);
 				if(id<0||id<$scope.FilteredSuggestions.length)
 					return $scope.FilteredSuggestions[id];
 				else 
@@ -527,20 +540,32 @@ diplomat.directive("cliReduced",()=>{
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
                 	var content = JSON.parse(greeting.body).content
-                    console.log(content);
+                    if(content==="Invalid command.") {
+            			$scope.keyFreq["errors"]++;
+            		}
                 	if(content==="undone"){
             			$scope.undoLastCommand();
-                	} else if(content==="restarting") {
+            			$scope.keyFreq["undos"]++;
+            		}  else if(content==="restarting") {
             			$scope.outputLines = [
 							{
 								output:"Welcome! Type 'help' for more.",
 								id:0
 							}
 						];
-					} else {
+						$scope.task++;
+						$scope.keyFreq={
+							"arrows":0,
+							"chars":0,
+							"returns":0,
+							"undos":0,
+							"errors":0,
+							"helps":0
+						};
+                	} else {
                 		$scope.outputLines[$scope.outputLines.length-1].output =
                     		(content).replace(/\n/g, "<br />");
-					}
+                	}
 
                     $timeout();
 
@@ -548,7 +573,9 @@ diplomat.directive("cliReduced",()=>{
             });
 
             var sendCommand = function(command){
-            	console.log('tryina senddd '+command);
+            	if(command==="help"){
+            		$scope.keyFreq["helps"]++;
+            	}
             	stompClient.send(
             		"/diplomat/command",
             		{},
@@ -570,7 +597,7 @@ diplomat.directive('onPressEnter', function () {
 
             if(event.which === 13 && 
             	scope.outputLines[scope.outputLines.length-1].output /*bit of a hack*/) {
-				console.log("enter pressed!");
+				// console.log("enter pressed!");
 
                 scope.$apply(function (){
                     scope.$eval(attrs.onPressEnter);
@@ -586,7 +613,7 @@ diplomat.directive('onPressDown', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 40) {
-            	console.log("down pressed!");
+            	// console.log("down pressed!");
                 scope.$apply(function (){
                     scope.$eval(attrs.onPressDown);
                 });
@@ -633,19 +660,95 @@ diplomat.directive('analyticsMonitor', ["localStorageService","$location",functi
     return {
         link: function (scope, element, attrs) {
         	element.bind("keydown", function (event) {
-    			var ts = Date.now();
-        		var sessionData = localStorageService.get($location.url());
-        		if(sessionData){
-        			sessionData[ts]=event.which;
+        		var arrows = [37,38,39,40];
+        		var enters = [13];
+        		if(arrows.indexOf(event.which)!=-1){
+        			scope.keyFreq["arrows"]++;
+        		} else if(enters.indexOf(event.which)!=-1){
+        			scope.keyFreq["returns"]++;
+                	var ts = Date.now();
+        			localStoreCumulativeTime(localStorageService,$location.url(),"INTENT_ACT_"+scope.task,ts);
         		} else {
-        			sessionData = {};
-        			sessionData[ts] = event.which;
+        			scope.keyFreq["chars"]++;
         		}
-        		localStorageService.set($location.url(),sessionData);
-        		console.log(localStorageService.get($location.url()));
-
-            	
         	});
+        }
+    };
+}]);
+
+function localStoreCumulativeTime(localStorageService, key, subkey, value){
+	var sessionData = localStorageService.get(key);
+	if(sessionData){
+		if(sessionData[subkey]) 
+			sessionData[subkey].push(value-sessionData[subkey+"_LAST_TS"]);
+		else
+			sessionData[subkey] = [];
+		sessionData[subkey+"_LAST_TS"]=value;
+	} else {
+		sessionData = {};
+		sessionData[subkey] = [];
+		sessionData[subkey+"_LAST_TS"] = value;
+	}
+	localStorageService.set(key,sessionData);
+}
+
+function isOutputSignal(newValue,signal){
+	var output = newValue[newValue.length-1].output;
+	if(!output) return false;
+	// console.log(output);
+	return output.includes(signal)
+}
+
+function locallyStore(localStorageService, key, subkey, value,dontOverwrite){
+	var sessionData = localStorageService.get(key);
+	if(sessionData){
+		if(dontOverwrite&&(sessionData[subkey])) return;
+		sessionData[subkey]=value;
+	} else {
+		sessionData = {};
+		sessionData[subkey] = value;
+	}
+	localStorageService.set(key,sessionData);
+}
+
+function locallyStoreIncrement(localStorageService, key, subkey){
+	var sessionData = localStorageService.get(key);
+	if(sessionData){
+		if(!sessionData[subkey])
+			sessionData[subkey]=1;
+		else
+			sessionData[subkey]++;
+	} else {
+		sessionData = {};
+		sessionData[subkey]=1;
+	}
+	localStorageService.set(key,sessionData);
+}
+
+diplomat.directive('outputMonitor', ["localStorageService","$location",function(localStorageService,$location){
+    return {
+        link: function (scope, element, attrs) {
+			scope.$watch('outputLines', function(newValue, oldValue) {
+				// console.log(newValue);
+				// console.log(isOutputSignal(newValue,"Congratulations."));
+                if (isOutputSignal(newValue,"Congratulations.")){
+                	var ts = Date.now();
+                	locallyStore(localStorageService,$location.url(),"TASK_SUCCEED_"+scope.task,true,true);
+                	locallyStore(localStorageService,$location.url(),"TASK_TIME_END_"+scope.task,ts,true);
+                	locallyStore(localStorageService,$location.url(),"TASK_ARROWS_"+scope.task,scope.keyFreq["arrows"],true);
+                	locallyStore(localStorageService,$location.url(),"TASK_ENTER_"+scope.task,scope.keyFreq["returns"],true);
+                	locallyStore(localStorageService,$location.url(),"TASK_CHARS_"+scope.task,scope.keyFreq["chars"],true);
+                	locallyStore(localStorageService,$location.url(),"COMMANDS_UNDONE_"+scope.task,scope.keyFreq["undos"],true);
+                	locallyStore(localStorageService,$location.url(),"INVALID_SUBMITS_"+scope.task,scope.keyFreq["errors"],true);
+                	locallyStore(localStorageService,$location.url(),"HELP_REFERS_"+scope.task,scope.keyFreq["helps"],true);
+                } 
+                if(isOutputSignal(newValue,"Welcome!")){
+                	var ts = Date.now();
+                	locallyStore(localStorageService,$location.url(),"TASK_TIME_BEGIN_"+scope.task,ts,true);
+                }
+            
+    			
+        	}, true);
         }
     };
 }]);
@@ -662,7 +765,6 @@ diplomat.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse)
         link: function (scope, element, attrs) {
             var model = $parse(attrs.focusMe);
             scope.$watch(model, function (value) {
-                console.log('value=', value);
                 if (value === true) {
                     $timeout(function () {
                         element[0].focus();

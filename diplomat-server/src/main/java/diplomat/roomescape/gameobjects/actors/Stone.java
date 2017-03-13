@@ -42,7 +42,7 @@ public class Stone extends AObtainable implements IExaminable,IUsable {
             }
             return "You insert the stone into the tube. It displaces the water inside a bit. "+a;
         }
-        return "";
+        return "You throw the stone at it. Nothing really happens. ";
     }
 
     @Override

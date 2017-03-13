@@ -48,6 +48,7 @@ public class Rope extends AGameObject implements IExaminable, IPlaceableTarget,I
         }else if(isTooManyWeights()){
             player.RemoveFromRoom(this);
             this.snapped = true;
+            player.LockPortcullis();
         }
     }
 

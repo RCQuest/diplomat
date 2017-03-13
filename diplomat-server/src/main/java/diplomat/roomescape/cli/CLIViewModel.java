@@ -6,13 +6,19 @@ import diplomat.roomescape.gameobjects.*;
 import diplomat.roomescape.gameobjects.actors.Player;
 
 public class CLIViewModel implements IRoomEscapeViewModel {
-    private static String helpText = "Possible commands:\n " +
-            "look _\n " +
-            "use _\n " +
-            "use _ on _\n " +
-            "pickup _ \n " +
-            "every _\n " +
-            "help";
+    private static String helpText = "Commands:\n " +
+            "look - describes the room\n" +
+            "look (object) - describes the object\n " +
+            "look inventory - shows what objects you are holding\n" +
+            "use (object) - performs some action with the object\n " +
+            "use (object) on (target) - applies the object to the target in some way\n " +
+            "pickup (object) - puts an object in your inventory\n " +
+            "every (query) - searches the room for all objects with names matching the query (used in the context of other commands)\n " +
+            "place (object) on (target) - places or attaches an object to the target in some manner\n" +
+            "break (object) - attempts to destroy the object\n" +
+            "open (object) - opens a container of some kind\n" +
+            "help - shows this list\n" +
+            "undo - reverses the effect of the last command\n";
     private static String undoneText = "undone";
     private static String startCode = "restarting";
     private CommandController cli;
