@@ -91,8 +91,12 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
 
     @Override
     public String GetObtainedDescription() {
+
         ArrayList<AObtainable> o = new ArrayList<>();
         for (AGameObject object : objects) {
+            if(!AObtainable.class.isInstance(object)) {
+                return "Invalid command.";
+            }
             o.add((AObtainable)object);
         }
         return o.stream()
@@ -103,6 +107,10 @@ public class ObjectGroup extends AObtainable implements IExaminable,IStandaloneU
     public boolean PerformGroupPickup(Player player, IRoomEscapeViewModel viewModel) {
         boolean didNotHaveItemWhenPerformed = true;
         for (AGameObject object : objects) {
+            if(!AObtainable.class.isInstance(object)) {
+                viewModel.ShowInvalidCommandMessage();
+                return true;
+            }
             viewModel.ShowPickupResult((AObtainable)object, player);
             didNotHaveItemWhenPerformed = didNotHaveItemWhenPerformed && player.Pickup((AObtainable)object);
         }

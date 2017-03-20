@@ -47,7 +47,11 @@ public class GameController {
     }
 
     public void HandleCommand(IGameCommand command) {
-        command.Execute(player,viewModel);
+        try {
+            command.Execute(player,viewModel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(!UndoCommand.class.isInstance(command)){
             player.Store(command);
         }

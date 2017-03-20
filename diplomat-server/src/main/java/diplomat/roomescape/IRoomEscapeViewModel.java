@@ -30,4 +30,6 @@ public interface IRoomEscapeViewModel {
     void ShowOpenResult(IOpenable object);
 
     void ShowGroupUseOnResult(IUsable object, ObjectGroup target);
+
+    void ShowInvalidCommandMessage();
 }

@@ -1,7 +1,6 @@
 package diplomat.roomescape.commands;
 
 import diplomat.roomescape.IRoomEscapeViewModel;
-import diplomat.roomescape.gameobjects.AGameObject;
 import diplomat.roomescape.gameobjects.IBreakable;
 import diplomat.roomescape.gameobjects.actors.Player;
 
