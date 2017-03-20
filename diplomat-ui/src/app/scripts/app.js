@@ -370,7 +370,10 @@ diplomat.directive("cli",()=>{
 			stompClient.connect({}, function(frame) {
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
-                	var content = JSON.parse(greeting.body).content
+                	var content = JSON.parse(greeting.body).content;
+                	if(content===""){
+                		content = "Invalid command.";
+                	}
 					if(content==="Invalid command.") {
             			$scope.keyFreq["errors"]++;
             		}
@@ -540,6 +543,9 @@ diplomat.directive("cliReduced",()=>{
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/response', function(greeting){
                 	var content = JSON.parse(greeting.body).content
+                    if(content===""){
+                		content = "Invalid command.";
+                	}
                     if(content==="Invalid command.") {
             			$scope.keyFreq["errors"]++;
             		}
