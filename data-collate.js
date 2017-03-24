@@ -1,10 +1,10 @@
 var fs = require('fs');
-var raw = JSON.parse(fs.readFileSync('collateme.json', 'utf8'));
+var file = JSON.parse(fs.readFileSync('collateme.json', 'utf8'));
 
 
 var tasks = 8;
 
-var printLine = (key)=>{
+var printLine = (key,raw)=>{
 	var line = "";
 	for (var i = 0; i < tasks; i++) {
 		var o = raw[key+i];
@@ -16,7 +16,7 @@ var printLine = (key)=>{
 	console.log(line);
 }
 
-var printIntentActGrid = ()=>{
+var printIntentActGrid = (raw)=>{
 	var dataRemains = true;
 	var row = 0;
 	while(dataRemains){
@@ -39,7 +39,7 @@ var printIntentActGrid = ()=>{
 	
 }
 
-var printTimeDifference = ()=>{
+var printTimeDifference = (raw)=>{
 	var line = "";
 	for (var i = 0; i < tasks; i++) {
 		var b = raw["TASK_TIME_BEGIN_"+i];
@@ -53,29 +53,48 @@ var printTimeDifference = ()=>{
 }
 
 console.log("UNDONE");
-printLine("COMMANDS_UNDONE_");
+file.forEach((item)=>{
+	printLine("COMMANDS_UNDONE_",item);
+});
+
 
 console.log("HELP");
-printLine("HELP_REFERS_");
+file.forEach((item)=>{
+	printLine("HELP_REFERS_",item);
+});
 
 console.log("INTENTACT");
-printIntentActGrid();
+file.forEach((item)=>{
+	printIntentActGrid(item);
+});
 
 console.log("INVALID");
-printLine("INVALID_SUBMITS_");
+file.forEach((item)=>{
+	printLine("INVALID_SUBMITS_",item);
+});
 
 console.log("ARROWS");
-printLine("TASK_ARROWS_");
+file.forEach((item)=>{
+	printLine("TASK_ARROWS_",item);
+});
 
 console.log("CHARS");
-printLine("TASK_CHARS_");
+file.forEach((item)=>{
+	printLine("TASK_CHARS_",item);
+});
 
 console.log("ENTERS");
-printLine("TASK_ENTER_");
+file.forEach((item)=>{
+	printLine("TASK_ENTER_",item);
+});
 
 console.log("SUCCEEDS");
-printLine("TASK_SUCCEED_");
+file.forEach((item)=>{
+	printLine("TASK_SUCCEED_",item);
+});
 
 console.log("TIME");
-printTimeDifference();
+file.forEach((item)=>{
+	printTimeDifference(item);
+});
 
